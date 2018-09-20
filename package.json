@@ -2,6 +2,7 @@
   "name": "full-stack-boiler-plate",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5678",
   "dependencies": {
     "concurrently": "^4.0.1",
     "express": "^4.16.3",
