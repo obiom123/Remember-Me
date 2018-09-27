@@ -8,7 +8,7 @@ const sequelize = new Sequelize({
 
 // Create models here
 const User = sequelize.define('user', {
-  username: { type: Sequelize.STRING, unique: true },
+  userEmail: { type: Sequelize.STRING, unique: true },
   passwordDigest: Sequelize.STRING
 })
 
