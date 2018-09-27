@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.post('/api/register', async(request, response) => {
   if (!request.body.userEmail || !request.body.password) {
     response.status(400).send('Both user email and password should be filled in.')
-    return;
+    return
   }
 
   const checkUserEmail = await User.findOne({
@@ -25,7 +25,7 @@ app.post('/api/register', async(request, response) => {
 
   if (checkUserEmail) {
     response.status(409).send('The user email has been used.')
-    return;
+    return
   }
 
   const saltRounds = 12;
@@ -42,6 +42,19 @@ app.post('/api/register', async(request, response) => {
   const jwtToken = jwt.sign({userId: newUser.id}, jwtSecret);
   response.status(200).json(jwtToken);
 })
+
+app.get('/api/current-user', async(request, response) => {
+  const token = request.headers['jwt-token'];
+  const verify = await jwt.verify(token, jwtSecret);
+  const currentUser = await User.findOne({
+    where: {
+        id: verify.userId
+    }
+  })
+  response.json({
+    userId: currentUser.id
+  })
+});
 
 app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`);
