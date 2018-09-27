@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Registration from "Registration";
 import "./style.css";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import LoginOrRegistration from "../LoginOrRegistration";
