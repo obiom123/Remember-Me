@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import "./style.css";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import LoginOrRegistration from "../LoginOrRegistration";
 import Contacts from "../Contacts";
-import AddContact from "../AddContact";
-
+import PrivateRoute from "../PrivateRoute";
 
 
 
@@ -12,33 +11,39 @@ import AddContact from "../AddContact";
 class App extends Component {
   constructor(props) {
     super(props)
-  
+
     this.state = {
+      userLoggedIn: false,
       userEmail: "",
       password: "",
     }
   }
+
+  onLogIn = () => {
+    this.setState({
+      userLoggedIn: true,
+    });
+  }
+
+  onInputChange = evt => {
+    this.setState({
+      [evt.target.name]: evt.target.value
+    })
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
-          <nav> 
-        <Link to="/LoginOrRegistration">Login</Link>
-        <br></br>
-        <Link to="/Contacts">Contacts</Link>
-        <br></br>
-        <Link to="/AddContact">AddContact</Link>
-          </nav>
-          
-        <Route path="/LoginOrRegistration" exact component={LoginOrRegistration} />
-        <Route path="/Contacts" exact component={Contacts} />
-        <Route path="/AddContact" exact component={AddContact} />
-
-
+          <Route
+            path="/login"
+            render={(props) => <LoginOrRegistration {...props} userEmail={this.state.userEmail} password={this.state.password} onLogIn={this.onLogIn} onInputChange={this.onInputChange} />}
+          />
+          <PrivateRoute path="/" exact component={Contacts} />
         </div>
-    </Router>
-    )
-  }
-}
-
-export default App;
+      </Router>
+        )
+      }
+    }
+    
+    export default App;
