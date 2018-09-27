@@ -13,6 +13,9 @@ export default class LoginOrRegistration extends Component {
   }
 
   register = async () => {
+    this.setState({
+      loggedIn: true
+    })
     const body = JSON.stringify({
       userEmail: this.props.userEmail,
       password: this.props.password
@@ -28,9 +31,6 @@ export default class LoginOrRegistration extends Component {
     const addUserJson = await addUser.json();
 
     localStorage.setItem('user-jwt', addUserJson);
-    this.setState({
-      loggedIn: true
-    })
   }
 
 
