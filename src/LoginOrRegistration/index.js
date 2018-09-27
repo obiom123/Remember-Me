@@ -5,8 +5,8 @@ export default class LoginOrRegistration extends Component {
 
 register = async () => {
   const body = JSON.stringify({
-    userEmail: this.state.userEmail,
-    password: this.state.password
+    userEmail: this.props.userEmail,
+    password: this.props.password
   });
   const addUser = await(await fetch('/api/register', {
     method: "POST",
@@ -20,21 +20,15 @@ register = async () => {
   this.props.onLogIn();
 }
 
-onInputChange = evt => {
-  this.setState({
-    [evt.target.name]: evt.target.value
-  })
-}
-
 
   render() {
     return (
       <div className="form-container">
         <form>  
             <label className="label">Email</label>
-            <input className="input" type="text" name="userEmail" onChange={this.onInputChange}/>
+            <input className="input" type="text" name="userEmail" onChange={this.props.onInputChange}/>
             <label>Password</label>
-            <input className="input" type="text" name="password" onChange={this.onInputChange}/>
+            <input className="input" type="text" name="password" onChange={this.props.onInputChange}/>
             <button type="button" onClick={this.register}>Register</button>
             <button type="button" onClick={this.logIn}>Log in</button>
         </form>

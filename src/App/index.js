@@ -9,20 +9,38 @@ class App extends Component {
     super(props)
   
     this.state = {
+      userLoggedIn: false,
       userEmail: "",
       password: "",
     }
   }
+
+  onLogIn = () => {
+    this.setState({
+      userLoggedIn: true,
+    });
+  }
+
+  onInputChange = evt => {
+    this.setState({
+      [evt.target.name]: evt.target.value
+    })
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
-          <nav> 
+        {!this.state.userLoggedIn && 
+          <Route 
+          path="/" 
+          render={(props) => <LoginOrRegistration {...props} userEmail={this.state.userEmail} password={this.state.password} onLogIn={this.onLogIn} onInputChange={this.onInputChange} />}
+          />}
+          {/* <nav> 
         <Link to="/LoginOrRegistration">Login</Link>
           </nav>
           <br></br>
-        <Route path="/LoginOrRegistration" exact component={LoginOrRegistration} />
-
+        <Route path="/LoginOrRegistration" exact component={LoginOrRegistration} /> */}
         </div>
     </Router>
     )
