@@ -3,6 +3,8 @@ import "./style.css";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import LoginOrRegistration from "../LoginOrRegistration";
 import Contacts from "../Contacts";
+import AddContact from "../AddContact";
+
 
 
 
@@ -24,10 +26,13 @@ class App extends Component {
         <Link to="/LoginOrRegistration">Login</Link>
         <br></br>
         <Link to="/Contacts">Contacts</Link>
+        <br></br>
+        <Link to="/AddContact">AddContact</Link>
           </nav>
           
         <Route path="/LoginOrRegistration" exact component={LoginOrRegistration} />
         <Route path="/Contacts" exact component={Contacts} />
+        <Route path="/AddContact" exact component={AddContact} />
 
 
         </div>
