@@ -2,15 +2,6 @@ import React, { Component } from 'react'
 import "./style.css"
 
 export default class LoginOrRegistration extends Component {
-constructor(props) {
-  super(props)
-
-  this.state = {
-     newUsername: "",
-     newPassword: "",
-  }
-}
-
 
   render() {
     return (

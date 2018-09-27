@@ -5,6 +5,14 @@ import LoginOrRegistration from "../LoginOrRegistration";
 
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       newUsername: "",
+       newPassword: "",
+    }
+  }
   render() {
     return (
       <Router>
@@ -12,7 +20,7 @@ class App extends Component {
           <nav> 
         <Link to="/LoginOrRegistration">Login</Link>
           </nav>
-        <h1> Hello World app page</h1>
+          <br></br>
         <Route path="/LoginOrRegistration" exact component={LoginOrRegistration} />
 
         </div>
