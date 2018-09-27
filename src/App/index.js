@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import "./style.css";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import LoginOrRegistration from "../LoginOrRegistration";
+import Contacts from "../Contacts";
+import PrivateRoute from "../PrivateRoute";
+
 
 
 class App extends Component {
   constructor(props) {
     super(props)
-  
+
     this.state = {
       userLoggedIn: false,
       userEmail: "",
@@ -31,20 +34,15 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-        {!this.state.userLoggedIn && 
-          <Route 
-          path="/" 
-          render={(props) => <LoginOrRegistration {...props} userEmail={this.state.userEmail} password={this.state.password} onLogIn={this.onLogIn} onInputChange={this.onInputChange} />}
-          />}
-          {/* <nav> 
-        <Link to="/LoginOrRegistration">Login</Link>
-          </nav>
-          <br></br>
-        <Route path="/LoginOrRegistration" exact component={LoginOrRegistration} /> */}
+          <Route
+            path="/login"
+            render={(props) => <LoginOrRegistration {...props} userEmail={this.state.userEmail} password={this.state.password} onLogIn={this.onLogIn} onInputChange={this.onInputChange} />}
+          />
+          <PrivateRoute path="/" exact component={Contacts} />
         </div>
-    </Router>
-    )
-  }
-}
-
-export default App;
+      </Router>
+        )
+      }
+    }
+    
+    export default App;
