@@ -9,8 +9,8 @@ class App extends Component {
     super(props)
   
     this.state = {
-       newUsername: "",
-       newPassword: "",
+      userEmail: "",
+      password: "",
     }
   }
   render() {
