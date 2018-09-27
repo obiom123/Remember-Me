@@ -1,0 +1,14 @@
+.label {
+    display: block;
+    text-align: center;
+}
+
+.input {
+    display: block;
+    text-align: center;
+}
+
+.form-container {
+    width: 80%;
+    margin: 0 auto;
+}

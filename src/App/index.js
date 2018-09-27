@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Registration from "Registration";
 import "./style.css";
 
 class App extends Component {
