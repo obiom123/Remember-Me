@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize({
-  database: 'project-3-remember-me',
+  database: 'project_3_remember_me',
   dialect: 'postgres'
 });
 
@@ -16,7 +16,7 @@ const Contact = sequelize.define('contact', {
   name: Sequelize.TEXT,
   contactInfo: Sequelize.TEXT,
   whereWeMet: Sequelize.TEXT,
-  importance: Sequelize.INTEGER(2),
+  importance: Sequelize.INTEGER,
   conversation: Sequelize.TEXT,
   linkedinFriends: Sequelize.BOOLEAN
 })
