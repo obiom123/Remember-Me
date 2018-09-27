@@ -23,7 +23,6 @@ constructor(props) {
             <input type="submit" value="Submit" />
         </form>
       </div>
->>>>>>> 354b88722c4f1a7b8885eefe3fe7776fe365a3d7
     )
   }
 }
