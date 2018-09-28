@@ -33,10 +33,11 @@ export default class LoginOrRegistration extends Component {
         errorMessage: addUserBody.message
       })
     } else {
+      localStorage.setItem('user-jwt', addUserBody);
       this.setState({
         loggedIn: true
       })
-      localStorage.setItem('user-jwt', addUserBody);
+      console.log('hi');
     }
 
   }
@@ -62,10 +63,11 @@ export default class LoginOrRegistration extends Component {
         errorMessage: checkUserBody.message
       })
     } else {
+      localStorage.setItem('user-jwt', checkUserBody);
       this.setState({
         loggedIn: true
       })
-      localStorage.setItem('user-jwt', checkUserBody);
+      
     }
     // localStorage.setItem('user-jwt', JSON.stringify(jwtToken));
   }
