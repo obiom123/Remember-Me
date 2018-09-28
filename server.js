@@ -11,7 +11,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.post('/api/register', async(request, response) => {
+app.post('/api/register', async (request, response) => {
   if (!request.body.userEmail || !request.body.password) {
     response.status(400).json({
       message: 'Both user email and password should be filled in.'
@@ -43,11 +43,11 @@ app.post('/api/register', async(request, response) => {
     passwordDigest: hashPassword
   })
 
-  const jwtToken = jwt.sign({userId: newUser.id}, jwtSecret);
+  const jwtToken = jwt.sign({ userId: newUser.id }, jwtSecret);
   response.status(200).json(jwtToken);
 })
 
-app.post('/api/login', async(request, response) => {
+app.post('/api/login', async (request, response) => {
   if (!request.body.userEmail || !request.body.password) {
     response.status(400).json({
       message: 'The user email and password is invalid'
@@ -70,7 +70,7 @@ app.post('/api/login', async(request, response) => {
   const checkPassword = await bcrypt.compare(request.body.password, userInfo.passwordDigest);
 
   if (checkPassword) {
-    const jwtToken = jwt.sign({userId: userInfo.id}, jwtSecret);
+    const jwtToken = jwt.sign({ userId: userInfo.id }, jwtSecret);
     response.json(jwtToken);
   } else {
     response.status(409).json({
@@ -79,12 +79,12 @@ app.post('/api/login', async(request, response) => {
   }
 })
 
-app.get('/api/current-user', async(request, response) => {
+app.get('/api/current-user', async (request, response) => {
   const token = request.headers['jwt-token'];
   const verify = await jwt.verify(token, jwtSecret);
   const currentUser = await User.findOne({
     where: {
-        id: verify.userId
+      id: verify.userId
     }
   })
   response.json({
@@ -92,9 +92,21 @@ app.get('/api/current-user', async(request, response) => {
   })
 });
 
-// app.post('/api/contacts', async (request, response) => {
-//   const {  } 
-// })
+app.post('/api/contacts', async (request, response) => {
+  const token = request.headers['jwt-token'];
+  const verify = await jwt.verify(token, jwtSecret);
+  const {name, contactInfo, whereYouMet, importance, linkedInFriends, conversationDetails} = request.body
+  const contact = await Contact.create({
+    name: name,
+    contactInfo: contactInfo,
+    whereYouMet: whereYouMet,
+    importance: importance,
+    linkedInFriends: linkedInFriends,
+    conversationDetails: conversationDetails,
+    userId: verify.userId
+  });
+  response.status(200).json(contact)
+});
 
 app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`);
