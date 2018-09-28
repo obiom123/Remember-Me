@@ -43,8 +43,6 @@ render() {
             <br></br>
             <button>Submit</button>
         </form>
-      
-
     </div>
   )
 }

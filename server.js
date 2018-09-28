@@ -13,7 +13,9 @@ app.use(bodyParser.json());
 
 app.post('/api/register', async(request, response) => {
   if (!request.body.userEmail || !request.body.password) {
-    response.status(400).send('Both user email and password should be filled in.')
+    response.status(400).json({
+      message: 'Both user email and password should be filled in.'
+    })
     return
   }
 
@@ -24,7 +26,9 @@ app.post('/api/register', async(request, response) => {
   })
 
   if (checkUserEmail) {
-    response.status(409).send('The user email has been used.')
+    response.status(409).json({
+      message: 'The user email has been used.'
+    })
     return
   }
 
@@ -43,6 +47,38 @@ app.post('/api/register', async(request, response) => {
   response.status(200).json(jwtToken);
 })
 
+app.post('/api/login', async(request, response) => {
+  if (!request.body.userEmail || !request.body.password) {
+    response.status(400).json({
+      message: 'The user email and password is invalid'
+    })
+    return;
+  }
+
+  const userInfo = await User.findOne({
+    where: {
+      userEmail: request.body.userEmail
+    }
+  })
+
+  if (userInfo === null) {
+    response.status(401).json({
+      message: 'Invalid user email'
+    })
+  }
+
+  const checkPassword = await bcrypt.compare(request.body.password, userInfo.passwordDigest);
+
+  if (checkPassword) {
+    const jwtToken = jwt.sign({userId: userInfo.id}, jwtSecret);
+    response.json(jwtToken);
+  } else {
+    response.status(409).json({
+      message: 'The user email and password does not match'
+    })
+  }
+})
+
 app.get('/api/current-user', async(request, response) => {
   const token = request.headers['jwt-token'];
   const verify = await jwt.verify(token, jwtSecret);
@@ -55,6 +91,8 @@ app.get('/api/current-user', async(request, response) => {
     userId: currentUser.id
   })
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`);
