@@ -28,7 +28,7 @@ export default class LoginOrRegistration extends Component {
 
     const addUserBody = await addUserResponse.json();
 
-    if (addUserResponse.status !== 200) {
+    if (addUserResponse.status === 409 || addUserResponse.status === 400) {
       this.setState({
         errorMessage: addUserBody.message
       })
@@ -38,6 +38,7 @@ export default class LoginOrRegistration extends Component {
       })
       localStorage.setItem('user-jwt', addUserBody);
     }
+
   }
 
   logIn = async () => {
@@ -45,7 +46,7 @@ export default class LoginOrRegistration extends Component {
       userEmail: this.props.userEmail,
       password: this.props.password
     });
-    
+
     const checkUserResponse = await fetch('/api/login', {
       method: 'POST',
       body: body,
@@ -56,7 +57,7 @@ export default class LoginOrRegistration extends Component {
 
     const checkUserBody = await checkUserResponse.json();
 
-    if (checkUserResponse.status !== 200) {
+    if (checkUserResponse.status === 409 || checkUserResponse.status === 401 || checkUserResponse.status === 400) {
       this.setState({
         errorMessage: checkUserBody.message
       })
@@ -65,7 +66,6 @@ export default class LoginOrRegistration extends Component {
         loggedIn: true
       })
       localStorage.setItem('user-jwt', checkUserBody);
-      console.log(checkUserBody);
     }
     // localStorage.setItem('user-jwt', JSON.stringify(jwtToken));
   }
@@ -75,7 +75,7 @@ export default class LoginOrRegistration extends Component {
   render() {
     if (this.state.loggedIn) {
       const { from } = this.props.location.state || { from: { pathname: "/" } };
-      return(
+      return (
         <Redirect to={from} />
       )
     }

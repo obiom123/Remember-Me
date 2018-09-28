@@ -48,22 +48,22 @@ app.post('/api/register', async(request, response) => {
 })
 
 app.post('/api/login', async(request, response) => {
-  if (!request.body.username || !request.body.password) {
+  if (!request.body.userEmail || !request.body.password) {
     response.status(400).json({
-      message: 'The username and password is invalid'
+      message: 'The user email and password is invalid'
     })
     return;
   }
 
   const userInfo = await User.findOne({
     where: {
-      username: request.body.username
+      userEmail: request.body.userEmail
     }
   })
 
   if (userInfo === null) {
     response.status(401).json({
-      message: 'Invalid username'
+      message: 'Invalid user email'
     })
   }
 
@@ -74,7 +74,7 @@ app.post('/api/login', async(request, response) => {
     response.json(jwtToken);
   } else {
     response.status(409).json({
-      message: 'The username and password does not match'
+      message: 'The user email and password does not match'
     })
   }
 })
