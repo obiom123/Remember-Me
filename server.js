@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User, Contact } = require('./models');
 
+
 const PORT = process.env.PORT || 5678;
 const jwtSecret = 'remembermesos757'
 
@@ -11,7 +12,17 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.post('/api/register', async (request, response) => {
+app.get('/api/current-user/contacts', async (request, response) => {
+  const token = request.headers['jwt-token'];
+  const verify = await jwt.verify(token, jwtSecret);
+ 
+  const contacts = await Contact.findAll({
+    where: {userId: verify.userId }
+  });
+  response.json(contacts)
+})
+
+app.post('/api/register', async(request, response) => {
   if (!request.body.userEmail || !request.body.password) {
     response.status(400).json({
       message: 'Both user email and password should be filled in.'
@@ -38,6 +49,7 @@ app.post('/api/register', async (request, response) => {
     saltRounds
   );
 
+  console.log(hashPassword);
   const newUser = await User.create({
     userEmail: request.body.userEmail,
     passwordDigest: hashPassword
