@@ -16,6 +16,7 @@ export default class AddContact extends Component {
       importance: "",
       linkedInFriends: "",
       conversationDetails: "",
+      // clicked
     }
   }
 
@@ -25,9 +26,7 @@ export default class AddContact extends Component {
     })
   }
 
-  // submitForm = () => {
 
-  // }
 
 
 render() {
