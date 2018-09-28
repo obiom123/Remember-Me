@@ -16,7 +16,6 @@ export default class Contacts extends Component {
     }
   }
 
-
   componentDidMount = async () => {
 
     const allContacts = await fetch('/api/current-user/contacts', {
@@ -40,7 +39,7 @@ export default class Contacts extends Component {
             <Link to="/addcontact">AddContact</Link>
           </nav>
           <h1>✚ Contacts</h1>
-          {this.state.contacts.map(contact => <h1>{contact.name}</h1>)}
+          {this.state.contacts.map(contact => <h1 key={contact.id} >{contact.name}</h1>)}
         </div>
     )
   }
