@@ -15,7 +15,7 @@ const User = sequelize.define('user', {
 const Contact = sequelize.define('contact', {
   name: Sequelize.TEXT,
   contactInfo: Sequelize.TEXT,
-  whereWeMet: Sequelize.TEXT,
+  whereYouMet: Sequelize.TEXT,
   importance: Sequelize.INTEGER,
   conversation: Sequelize.TEXT,
   linkedinFriends: Sequelize.BOOLEAN
