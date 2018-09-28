@@ -8,19 +8,17 @@ export default class LoginOrRegistration extends Component {
     super(props)
 
     this.state = {
-      loggedIn: false
+      loggedIn: false,
+      errorMessage: ''
     }
   }
 
   register = async () => {
-    this.setState({
-      loggedIn: true
-    })
     const body = JSON.stringify({
       userEmail: this.props.userEmail,
       password: this.props.password
     });
-    const addUser = await fetch('/api/register', {
+    const addUserResponse = await fetch('/api/register', {
       method: "POST",
       body: body,
       headers: {
@@ -28,10 +26,50 @@ export default class LoginOrRegistration extends Component {
       }
     });
 
-    const addUserJson = await addUser.json();
+    const addUserBody = await addUserResponse.json();
 
-    localStorage.setItem('user-jwt', addUserJson);
+    if (addUserResponse.status !== 200) {
+      this.setState({
+        errorMessage: addUserBody.message
+      })
+    } else {
+      this.setState({
+        loggedIn: true
+      })
+      localStorage.setItem('user-jwt', addUserBody);
+    }
   }
+
+  logIn = async () => {
+    const body = JSON.stringify({
+      userEmail: this.props.userEmail,
+      password: this.props.password
+    });
+    
+    const checkUserResponse = await fetch('/api/login', {
+      method: 'POST',
+      body: body,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const checkUserBody = await checkUserResponse.json();
+
+    if (checkUserResponse.status !== 200) {
+      this.setState({
+        errorMessage: checkUserBody.message
+      })
+    } else {
+      this.setState({
+        loggedIn: true
+      })
+      localStorage.setItem('user-jwt', checkUserBody);
+      console.log(checkUserBody);
+    }
+    // localStorage.setItem('user-jwt', JSON.stringify(jwtToken));
+  }
+
 
 
   render() {
@@ -50,6 +88,7 @@ export default class LoginOrRegistration extends Component {
           <input className="input" type="text" name="password" onChange={this.props.onInputChange} />
           <button type="button" onClick={this.register}>Register</button>
           <button type="button" onClick={this.logIn}>Log in</button>
+          <p>{this.state.errorMessage}</p>
         </form>
       </div>
     )

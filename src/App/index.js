@@ -19,6 +19,7 @@ class App extends Component {
     }
   }
 
+  // I think we can get rid of this.state.userLoggedIn and onLogIn() because we have loggedIn on LoginOrRegistration component
   onLogIn = () => {
     this.setState({
       userLoggedIn: true,
