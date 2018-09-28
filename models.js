@@ -17,8 +17,8 @@ const Contact = sequelize.define('contact', {
   contactInfo: Sequelize.TEXT,
   whereYouMet: Sequelize.TEXT,
   importance: Sequelize.INTEGER,
-  conversation: Sequelize.TEXT,
-  linkedinFriends: Sequelize.BOOLEAN
+  conversationDetails: Sequelize.TEXT,
+  linkedInFriends: Sequelize.BOOLEAN
 })
 
 User.hasMany(Contact);
