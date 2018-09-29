@@ -26,7 +26,7 @@ export default class AddContact extends Component {
     })
   }
 
-    addThisContact = async () => {
+  addThisContact = async () => {
     const body = JSON.stringify({
       name: this.state.name,
       contactInfo: this.state.contactInfo,

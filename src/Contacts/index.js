@@ -17,7 +17,7 @@ export default class Contacts extends Component {
   }
 
   componentDidMount = async () => {
-
+    
     const allContacts = await fetch('/api/current-user/contacts', {
       method: 'GET',
       headers: {
@@ -26,7 +26,6 @@ export default class Contacts extends Component {
     })
 
     const allContactsInfo = await allContacts.json();
-    console.log(allContactsInfo)
     this.setState({
       contacts: allContactsInfo
     })

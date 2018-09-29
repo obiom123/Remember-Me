@@ -120,6 +120,16 @@ app.post('/api/contacts', async (request, response) => {
   response.status(200).json(contact)
 });
 
+app.get('/api/contacts/:id', async (request, response) => {
+  let id = pareInt(request.params.id);
+  const idContact = await Contact.findOne({
+    where: {
+      id: id
+    }
+  })
+  response.json(idContact)
+})
+
 app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`);
 });
