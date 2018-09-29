@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import "./style.css"
-
-
-
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import Contacts from "../Contacts"
+import PrivateRouteContacts from "../PrivateRouteContacts";
 
 
 export default class AddContact extends Component {
@@ -16,7 +16,7 @@ export default class AddContact extends Component {
       importance: "",
       linkedInFriends: "",
       conversationDetails: "",
-      // clicked
+      submittedAddContact: false
     }
   }
 
@@ -46,14 +46,28 @@ export default class AddContact extends Component {
     });
 
     const checkUserBody = await checkUserResponse.json();
+
+    localStorage.setItem('add-contact', 'true')
+    this.setState({
+      submittedAddContact: true
+    })
+  }
+  
+  onSubmit = (e) => {
+    e.preventDefault();
   }
 
 
   render() {
+    if (this.state.submittedAddContact) {
+      return (
+        <Redirect to="/" />
+      )
+    }
     return (
       <div className="inputForm-container">
         <h1> Add New Contact Page</h1>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <label className="add-label add-name-label">Name</label>
           <input className="inputName" type="text" name="name" onChange={this.onInputChange} />
           <br></br>
