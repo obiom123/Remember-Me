@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import "./style.css"
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import AddContact from "../AddContact";
-import PrivateRouteContacts from "../PrivateRouteContacts";
-
-
 
 
 export default class Contacts extends Component {
