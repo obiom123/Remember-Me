@@ -66,7 +66,7 @@ export default class AddContact extends Component {
         <h1> Add New Contact Page</h1>
         <form onSubmit={this.onSubmit}>
           <label className="add-label add-name-label">Name</label>
-          <input className="inputName" type="text" name="name" onChange={this.onInputChange} />
+          <input className="add-input name" type="text" name="name" onChange={this.onInputChange} />
           <br></br>
           <label className="add-label add-contactInfo-label">Email/Phone#/Other</label>
           <input className="inputContactInfo" type="text" name="contactInfo" onChange={this.onInputChange} />

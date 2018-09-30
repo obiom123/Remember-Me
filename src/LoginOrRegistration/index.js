@@ -89,20 +89,22 @@ export default class LoginOrRegistration extends Component {
     return (
       <div className="form-container">
         <form>
-          <label className="label">Email</label>
-          <input className="input" type="text" name="userEmail" onChange={this.props.onInputChange} />
+
+          <label className="login-label email">Email</label>
+          <input className="login-input email" type="text" name="userEmail" onChange={this.props.onInputChange} />
           {!this.props.emailValid && (
               <div className="">
                 <p> enter valid email</p>
               </div>
             )}
-          <label>Password</label>
-          <input className="input" type="text" name="password" onChange={this.props.onInputChange} />
+          <label className="login-label password">Password</label>
+          <input className="login-input password" type="text" name="password" onChange={this.props.onInputChange} />
           {!this.props.passwordValid && (
               <div className="">
                 <p> enter valid password</p>
               </div>
             )}
+            
           <button type="button" onClick={this.register}>Register</button>
           <button type="button" onClick={this.logIn}>Log in</button>
           <p>{this.state.errorMessage}</p>
