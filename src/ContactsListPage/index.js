@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import "./style.css"
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import AddContact from "../AddContact";
+import PrivateRoute from "../PrivateRoute";
+import DetailContactPage from "../DetailContactPage";
 
 
-export default class Contacts extends Component {
+export default class ContactsListPage extends Component {
   constructor(props) {
     super(props)
 
@@ -35,7 +37,7 @@ export default class Contacts extends Component {
             <Link to="/addcontact">AddContact</Link>
           </nav>
           <h1>✚ Contacts</h1>
-          {this.state.contacts.map(contact => <h1 key={contact.id} >{contact.name}</h1>)}
+          {this.state.contacts.map(contact => <Link to={'/detailcontact/' + contact.id} ><h1 key={contact.id} >{contact.name}</h1></Link>)}
         </div>
     )
   }

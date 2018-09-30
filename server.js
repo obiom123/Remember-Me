@@ -12,16 +12,6 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.get('/api/current-user/contacts', async (request, response) => {
-  const token = request.headers['jwt-token'];
-  const verify = await jwt.verify(token, jwtSecret);
- 
-  const contacts = await Contact.findAll({
-    where: {userId: verify.userId }
-  });
-  response.json(contacts)
-})
-
 app.post('/api/register', async(request, response) => {
   if (!request.body.userEmail || !request.body.password) {
     response.status(400).json({
@@ -120,8 +110,18 @@ app.post('/api/contacts', async (request, response) => {
   response.status(200).json(contact)
 });
 
+app.get('/api/current-user/contacts', async (request, response) => {
+  const token = request.headers['jwt-token'];
+  const verify = await jwt.verify(token, jwtSecret);
+ 
+  const contacts = await Contact.findAll({
+    where: {userId: verify.userId }
+  });
+  response.json(contacts)
+})
+
 app.get('/api/contacts/:id', async (request, response) => {
-  let id = pareInt(request.params.id);
+  let id = request.params.id
   const idContact = await Contact.findOne({
     where: {
       id: id
