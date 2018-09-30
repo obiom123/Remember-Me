@@ -17,6 +17,8 @@ class App extends Component {
       // userLoggedIn: false,
       userEmail: "",
       password: "",
+      emailValid: false,
+      passwordValid: false,
     }
   }
 
@@ -32,6 +34,17 @@ class App extends Component {
     this.setState({
       [evt.target.name]: evt.target.value
     })
+
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const passwordRegex = /^(?=.{6,32}$)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*/;
+
+    const validateEmail = emailRegex.test(String(this.state.userEmail).toLowerCase());
+    const validatePassword = passwordRegex.test(String(this.state.password));
+
+    this.setState({
+      emailValid: validateEmail,
+      passwordValid: validatePassword,
+    })
   }
 
   render() {
@@ -40,7 +53,7 @@ class App extends Component {
         <div className="App">
           <Route
             path="/login"
-            render={(props) => <LoginOrRegistration {...props} userEmail={this.state.userEmail} password={this.state.password} onLogIn={this.onLogIn} onInputChange={this.onInputChange} />}
+            render={(props) => <LoginOrRegistration {...props} emailValid={this.state.emailValid} passwordValid={this.state.passwordValid} userEmail={this.state.userEmail} password={this.state.password} onLogIn={this.onLogIn} onInputChange={this.onInputChange} />}
           />
           <PrivateRoute path="/addcontact" exact component={AddContact} />
           <PrivateRoute path="/" exact component={ContactsListPage} />
