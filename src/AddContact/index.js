@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import "./style.css"
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
-import Contacts from "../Contacts"
-import PrivateRouteContacts from "../PrivateRouteContacts";
-
 
 export default class AddContact extends Component {
   constructor(props) {
@@ -26,7 +23,7 @@ export default class AddContact extends Component {
     })
   }
 
-    addThisContact = async () => {
+  addThisContact = async () => {
     const body = JSON.stringify({
       name: this.state.name,
       contactInfo: this.state.contactInfo,

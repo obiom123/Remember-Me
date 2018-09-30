@@ -13,33 +13,51 @@ export default class LoginOrRegistration extends Component {
     }
   }
 
+  validateEmail = (email) => {
+    var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(String(email).toLowerCase());
+  }
+
+  validatePassword = (password) => {
+    var regex = /^(?=.{6,32}$)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*/;
+    return regex.test(String(password));
+    // Length between 6 and 32 characters.
+    // One or more uppercase letters.
+    // One or more lowercase letters.
+    // One or more numbers.
+  }
+
   register = async () => {
-    const body = JSON.stringify({
-      userEmail: this.props.userEmail,
-      password: this.props.password
-    });
-    const addUserResponse = await fetch('/api/register', {
-      method: "POST",
-      body: body,
-      headers: {
-        'Content-Type': 'application/json'
+    if (this.validateEmail(this.props.userEmail) && this.validatePassword(this.props.password)) {
+      const body = JSON.stringify({
+        userEmail: this.props.userEmail,
+        password: this.props.password
+      });
+      const addUserResponse = await fetch('/api/register', {
+        method: "POST",
+        body: body,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const addUserBody = await addUserResponse.json();
+
+      if (addUserResponse.status === 409 || addUserResponse.status === 400) {
+        this.setState({
+          errorMessage: addUserBody.message
+        })
+      } else {
+        localStorage.setItem('user-jwt', addUserBody);
+        this.setState({
+          loggedIn: true
+        })
+        console.log('hi');
       }
-    });
-
-    const addUserBody = await addUserResponse.json();
-
-    if (addUserResponse.status === 409 || addUserResponse.status === 400) {
-      this.setState({
-        errorMessage: addUserBody.message
-      })
-    } else {
-      localStorage.setItem('user-jwt', addUserBody);
-      this.setState({
-        loggedIn: true
-      })
-      console.log('hi');
     }
-
+    else {
+     console.log('use a real email')
+   }
   }
 
   logIn = async () => {

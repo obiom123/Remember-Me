@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import "./style.css";
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import LoginOrRegistration from "../LoginOrRegistration";
-import Contacts from "../Contacts";
+import ContactsListPage from "../ContactsListPage";
 import PrivateRoute from "../PrivateRoute";
-import PrivateRouteContacts from "../PrivateRouteContacts";
 import AddContact from "../AddContact";
 
 
@@ -44,8 +43,7 @@ class App extends Component {
             render={(props) => <LoginOrRegistration {...props} userEmail={this.state.userEmail} password={this.state.password} onLogIn={this.onLogIn} onInputChange={this.onInputChange} />}
           />
           <PrivateRoute path="/addcontact" exact component={AddContact} />
-          <PrivateRoute path="/" exact component={Contacts} />
-
+          <PrivateRoute path="/" exact component={ContactsListPage} />
         </div>
       </Router>
     )

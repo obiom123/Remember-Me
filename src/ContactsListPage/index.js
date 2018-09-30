@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import "./style.css"
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import AddContact from "../AddContact";
-import PrivateRouteContacts from "../PrivateRouteContacts";
-
-
 
 
 export default class Contacts extends Component {
@@ -17,7 +14,7 @@ export default class Contacts extends Component {
   }
 
   componentDidMount = async () => {
-
+    
     const allContacts = await fetch('/api/current-user/contacts', {
       method: 'GET',
       headers: {
@@ -26,7 +23,6 @@ export default class Contacts extends Component {
     })
 
     const allContactsInfo = await allContacts.json();
-    console.log(allContactsInfo)
     this.setState({
       contacts: allContactsInfo
     })
