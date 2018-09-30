@@ -20,7 +20,7 @@ export default class DetailContactPage extends Component {
     }
     
   render() {
-        console.log(this.props.match.params.id, this.state.contact)
+        // console.log(this.props.match.params.id, this.state.contact)
         const { name, contactInfo, whereYouMet, importance, conversationDetails, linkedInFriends } = this.state.contact
     return (
       <div>
