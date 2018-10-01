@@ -130,6 +130,25 @@ app.get('/api/contacts/:id', async (request, response) => {
   response.json(idContact)
 })
 
+app.put('/api/contacts/:id', async (request, response) => {
+  let id = request.params.id
+  const contactEdit = await Contact.findOne({
+    where: {
+      id: id
+    }
+  })
+  const { name, contactInfo, whereYouMet, importance, conversationDetails, linkedInFriends } = request.body
+  contactEdit.name = name 
+  contactEdit.contactInfo = contactInfo
+  contactEdit.whereYouMet = whereYouMet
+  contactEdit.importance = importance
+  contactEdit.conversationDetails = conversationDetails
+  contactEdit.linkedInFriends = linkedInFriends
+  await contactEdit.save();
+  console.log(contactEdit)
+  response.json(contactEdit);
+})
+
 app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`);
 });

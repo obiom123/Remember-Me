@@ -6,6 +6,7 @@ import ContactsListPage from "../ContactsListPage";
 import PrivateRoute from "../PrivateRoute";
 import AddContact from "../AddContact";
 import DetailContactPage from "../DetailContactPage";
+import EditContactPage from "../EditContactPage"
 
 
 class App extends Component {
@@ -57,6 +58,7 @@ class App extends Component {
           <PrivateRoute path="/addcontact" exact component={AddContact} />
           <PrivateRoute path="/" exact component={ContactsListPage} />
           <PrivateRoute path="/detailcontact/:id" exact component={DetailContactPage} />
+          <PrivateRoute path="/editcontact/:id" exact component={EditContactPage} />
         </div>
       </Router>
     )
