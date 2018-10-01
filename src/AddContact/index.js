@@ -44,7 +44,6 @@ export default class AddContact extends Component {
 
     const checkUserBody = await checkUserResponse.json();
 
-    localStorage.setItem('add-contact', 'true')
     this.setState({
       submittedAddContact: true
     })
@@ -81,7 +80,7 @@ export default class AddContact extends Component {
           <input className="inputLinkedInFriends" type="text" name="linkedInFriends" onChange={this.onInputChange} />
           <br></br>
           <label className="add-label add-ConversationDetails-label">Conversation Details</label>
-          <input className="inputConversationDetails" type="text" name="conversationDetails" onChange={this.onInputChange} />
+          <textarea className="inputConversationDetails" name="conversationDetails" onChange={this.onInputChange} rows="10" cols="60"/>
           <br></br>
           <button onClick={this.addThisContact}>Submit</button>
         </form>
