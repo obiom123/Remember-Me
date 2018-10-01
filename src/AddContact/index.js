@@ -12,7 +12,7 @@ export default class AddContact extends Component {
       contactInfo: "",
       whereYouMet: "",
       importance: 1,
-      linkedInFriends: "",
+      linkedInFriends: false,
       conversationDetails: "",
       submittedAddContact: false
     }
@@ -49,7 +49,7 @@ export default class AddContact extends Component {
       submittedAddContact: true
     })
   }
-  
+
   onSubmit = (e) => {
     e.preventDefault();
   }
@@ -74,21 +74,24 @@ export default class AddContact extends Component {
           <input id="input-WhereYouMet" className="add-input inputWhereYouMet" type="text" name="whereYouMet" onChange={this.onInputChange} />
           <br></br>
           <label htmlFor="input-Importance" className="add-label add-contactImportance-label">Importance (1-5)</label>
-          <select className="dropdown importance-dropdown" name="importance" value={this.state.importance} onChange={this.onInputChange} >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+          <select className="dropdown importancce-dropdown" name="importance" onChange={this.onInputChange} >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
           </select>
           <br></br>
           <label htmlFor="input-LinkedInFriends" className="add-label add-LinkedInFriends-label">Connected LinkedIn Friends? (Y/N)</label>
-          <input id="input-LinkedInFriends" className="add-input inputLinkedInFriends" type="checkbox" name="linkedInFriends" onChange={this.onInputChange} />
+          <select className="add-input inputLinkedInFriends" name="linkedInFriends" onChange={this.onInputChange} >
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+          </select>
           <br></br>
           <label className="add-label add-ConversationDetails-label">Conversation Details</label>
-          <textarea className="inputConversationDetails" name="conversationDetails" onChange={this.onInputChange} rows="10" cols="60"/>
+          <textarea className="inputConversationDetails" name="conversationDetails" onChange={this.onInputChange} rows="10" cols="60" />
           <br></br>
-          <button onClick={this.addThisContact}><button>Add Contact</button></button>
+          <button onClick={this.addThisContact}>Add Contact</button>
         </form>
       </div>
     )

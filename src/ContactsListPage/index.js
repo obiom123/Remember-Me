@@ -77,7 +77,7 @@ export default class ContactsListPage extends Component {
            <button className="sort-button" onClick={this.sortByImportance}>Importance </button>
            <button className="sort-button" onClick={this.sortByDateAdded}>Date Added </button>
         </nav>
-        {this.state.contacts.map(contact => <Link className="each-contact-name" to={'/detailcontact/' + contact.id} ><p className="each-contact-name" key={contact.id} >{contact.name}</p></Link>)}
+        {this.state.contacts.map(contact => <Link className="each-contact-name" to={'/detailcontact/' + contact.id} key={contact.id} ><p className="each-contact-name" key={contact.id} >{contact.name}</p></Link>)}
         </div>
       </div>
     )
