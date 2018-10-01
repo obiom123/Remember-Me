@@ -11,7 +11,7 @@ export default class AddContact extends Component {
       name: "",
       contactInfo: "",
       whereYouMet: "",
-      importance: "",
+      importance: 1,
       linkedInFriends: "",
       conversationDetails: "",
       submittedAddContact: false
