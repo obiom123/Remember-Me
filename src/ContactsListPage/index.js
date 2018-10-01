@@ -34,8 +34,9 @@ export default class Contacts extends Component {
           <nav>
             <Link to="/addcontact">AddContact</Link>
           </nav>
-          <h1>✚ Contacts</h1>
-          {this.state.contacts.map(contact => <h1 key={contact.id} >{contact.name}</h1>)}
+          <div className="form-addContact">
+          {this.state.contacts.map(contact => <p className="each-contact-name" key={contact.id} >{contact.name}</p>)}
+          </div>
         </div>
     )
   }
