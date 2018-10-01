@@ -66,12 +66,16 @@ export default class ContactsListPage extends Component {
     return (
       <div className="Contacts">
       <div className="all-form-containers">
-        <nav>
-          <Link to="/addcontact">AddContact</Link>
-           <button onClick={this.sortByImportance}>Sort By Importance </button>
-           <button onClick={this.sortByDateAdded}>Sort By Date Added </button>
+        <div className="contact-container">
+          <p className="contact-header"> Contacts </p>
+          <Link  to="/addcontact"><img className="addcontact-button" src={"/images/add-a-button-icon-64392.png"}/></Link>
+        </div>
+        
+        
+        <nav className="sort-container">           
+           <button className="sort-button" onClick={this.sortByImportance}>Importance </button>
+           <button className="sort-button" onClick={this.sortByDateAdded}>Date Added </button>
         </nav>
-        <p className="contact-header"> Contacts</p>
         {this.state.contacts.map(contact => <Link className="each-contact-name" to={'/detailcontact/' + contact.id} ><p className="each-contact-name" key={contact.id} >{contact.name}</p></Link>)}
         </div>
       </div>

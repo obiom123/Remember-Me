@@ -74,7 +74,7 @@ export default class AddContact extends Component {
           <input id="input-WhereYouMet" className="add-input inputWhereYouMet" type="text" name="whereYouMet" onChange={this.onInputChange} />
           <br></br>
           <label htmlFor="input-Importance" className="add-label add-contactImportance-label">Importance (1-5)</label>
-          <select className="dropdown importancce-dropdown" name="importance" value={this.state.importance} onChange={this.onInputChange} >
+          <select className="dropdown importance-dropdown" name="importance" value={this.state.importance} onChange={this.onInputChange} >
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
