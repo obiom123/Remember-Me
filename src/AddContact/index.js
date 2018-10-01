@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./style.css"
-import { BrowserRouter as Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import PrivateRoute from "../PrivateRoute";
 
 export default class AddContact extends Component {
   constructor(props) {
@@ -44,7 +45,6 @@ export default class AddContact extends Component {
 
     const checkUserBody = await checkUserResponse.json();
 
-    localStorage.setItem('add-contact', 'true')
     this.setState({
       submittedAddContact: true
     })
@@ -63,27 +63,27 @@ export default class AddContact extends Component {
     }
     return (
       <div className="inputForm-container">
-        <h1> Add New Contact Page</h1>
-        <form onSubmit={this.onSubmit}>
-          <label className="add-label add-name-label">Name</label>
-          <input className="add-input name" type="text" name="name" onChange={this.onInputChange} />
+
+        <form className="form-addContact" onSubmit={this.onSubmit}>
+          <label for="input-name" className="add-label add-name-label">Full Name/Nickname</label>
+          <input id="input-name" className="add-input name" type="text" name="name" onChange={this.onInputChange} />
           <br></br>
-          <label className="add-label add-contactInfo-label">Email/Phone#/Other</label>
-          <input className="inputContactInfo" type="text" name="contactInfo" onChange={this.onInputChange} />
+          <label for="input-ContactInfo" className="add-label add-contactInfo-label">Email/Phone#/Other</label>
+          <input id="input-ContactInfo" className="add-input inputContactInfo" type="text" name="contactInfo" onChange={this.onInputChange} />
           <br></br>
-          <label className="add-label add-contactWhereYouMet-label">Where You Met</label>
-          <input className="inputWhereYouMet" type="text" name="whereYouMet" onChange={this.onInputChange} />
+          <label for="input-WhereYouMet" className="add-label add-contactWhereYouMet-label">Event/Location of Initial Meeting</label>
+          <input id="input-WhereYouMet" className="add-input inputWhereYouMet" type="text" name="whereYouMet" onChange={this.onInputChange} />
           <br></br>
-          <label className="add-label add-contactImportance-label">Importance</label>
-          <input className="inputImportance" type="text" name="importance" onChange={this.onInputChange} />
+          <label for="input-Importance" className="add-label add-contactImportance-label">Importance (1-10)</label>
+          <input id="input-Importance" className="add-input inputImportance" type="text" name="importance" onChange={this.onInputChange} />
           <br></br>
-          <label className="add-label add-LinkedInFriends-label">LinkedIn Friends?</label>
-          <input className="inputLinkedInFriends" type="text" name="linkedInFriends" onChange={this.onInputChange} />
+          <label for="input-LinkedInFriends" className="add-label add-LinkedInFriends-label">Connected LinkedIn Friends? (Y/N)</label>
+          <input id="input-LinkedInFriends" className="add-input inputLinkedInFriends" type="text" name="linkedInFriends" onChange={this.onInputChange} />
           <br></br>
           <label className="add-label add-ConversationDetails-label">Conversation Details</label>
-          <input className="inputConversationDetails" type="text" name="conversationDetails" onChange={this.onInputChange} />
+          <textarea className="inputConversationDetails" name="conversationDetails" onChange={this.onInputChange} rows="10" cols="60"/>
           <br></br>
-          <button onClick={this.addThisContact}>Submit</button>
+          <button onClick={this.addThisContact}>Add Contact</button>
         </form>
       </div>
     )

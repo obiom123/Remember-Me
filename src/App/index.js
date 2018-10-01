@@ -6,6 +6,7 @@ import ContactsListPage from "../ContactsListPage";
 import PrivateRoute from "../PrivateRoute";
 import AddContact from "../AddContact";
 import DetailContactPage from "../DetailContactPage";
+import EditContactPage from "../EditContactPage"
 
 
 class App extends Component {
@@ -50,6 +51,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+        <div className="square-container">
           <Route
             path="/login"
             render={(props) => <LoginOrRegistration {...props} emailValid={this.state.emailValid} passwordValid={this.state.passwordValid} userEmail={this.state.userEmail} password={this.state.password} onLogIn={this.onLogIn} onInputChange={this.onInputChange} />}
@@ -57,6 +59,8 @@ class App extends Component {
           <PrivateRoute path="/addcontact" exact component={AddContact} />
           <PrivateRoute path="/" exact component={ContactsListPage} />
           <PrivateRoute path="/detailcontact/:id" exact component={DetailContactPage} />
+          <PrivateRoute path="/editcontact/:id" exact component={EditContactPage} />
+        </div>
         </div>
       </Router>
     )

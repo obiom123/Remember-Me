@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./style.css"
-import { BrowserRouter as Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import PrivateRoute from "../PrivateRoute";
 
 
 export default class LoginOrRegistration extends Component {
@@ -72,24 +73,21 @@ export default class LoginOrRegistration extends Component {
       this.setState({
         loggedIn: true
       })
-      
     }
-    // localStorage.setItem('user-jwt', JSON.stringify(jwtToken));
   }
 
 
 
   render() {
-    // if (this.state.loggedIn) {
-    //   const { from } = this.props.location.state || { from: { pathname: "/" } };
-    //   return (
-    //     <Redirect to={from} />
-    //   )
-    // }
+    if (this.state.loggedIn) {
+      const { from } = this.props.location.state || { from: { pathname: "/" } };
+      return (
+        <Redirect to={from} />
+      )
+    }
     return (
       <div className="form-container">
-        <form>
-
+        <form className="login-form">
           <label className="login-label email">Email</label>
           <input className="login-input email" type="text" name="userEmail" onChange={this.props.onInputChange} />
           {!this.props.emailValid && (
