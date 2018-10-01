@@ -9,7 +9,7 @@ export default class DetailContactPage extends Component {
 
         this.state = {
             contact: {},
-            linkedInFriends: "false"
+            deleteContact: false
         }
     }
 
@@ -20,38 +20,42 @@ export default class DetailContactPage extends Component {
         this.setState({
             contact: contactInfo
         })
-        // if (/\r?\n/.test(this.state.contact.conversationDetails)) {
-        //     const convertedDetails = this.state.conversationDetails.replace(/\r?\n/g, '<br />')
-        //     this.setState({
-        //         conversationDetails: convertedDetails
-        //     })
-        // } else {
-        //     this.setState({
-        //         conversationDetails: this.state.contact.conversationDetails
-        //     })
-        // }
-        if (this.state.contact.linkedInFriends === true) {
-            this.setState({
-                linkedInFriends: "true"
-            })
-        }
+    }
+
+    deleteContact = async () => {
+        const id = this.props.match.params.id
+        const deleteContactInfo = await fetch(`/api/contacts/${id}`, {
+            method: 'DELETE',
+        });
+        this.setState({
+            deleteContact: true
+        })
     }
 
     render() {
-        console.log(this.props.match.params.id, this.state.contact)
-        console.log(this.state.contact.conversationDetails);
-        const { name, contactInfo, whereYouMet, importance, conversationDetails } = this.state.contact
+        const { name, contactInfo, whereYouMet, importance, linkedInFriends, conversationDetails } = this.state.contact
+        let convertedDetails = null
+        let booleanText = null
+        if (conversationDetails) {
+            convertedDetails = conversationDetails.replace(/\r?\n/g, '<br />')
+            booleanText = `${linkedInFriends}`
+        }
+        if (this.state.deleteContact) {
+            return (
+              <Redirect to="/" />
+            )
+          }
         return (
             <div>
                 <div className="all-form-containers">
-                <p className="detail-info detail-name" >{name}</p>
-                <p className="detail-info">{contactInfo}</p>
-                <p className="detail-info">{whereYouMet}</p>
-                Importance <p>{importance}</p>
-                {/* {conversationDetails.match(/\n/g) && <ul>conversationDetails</ul>} */}
-                {conversationDetails}
-                <p>Connected on LinkedIn? <span>{this.state.linkedInFriends}</span></p>
-                <Link to={'/editcontact/' + this.props.match.params.id} ><button>Edit</button></Link>
+                    <p className="detail-info detail-name" >{name}</p>
+                    <p className="detail-info">{contactInfo}</p>
+                    <p className="detail-info">{whereYouMet}</p>
+                    Importance <p>{importance}</p>
+                    <div dangerouslySetInnerHTML={{ __html: convertedDetails }} />
+                    <p>Connected on LinkedIn? <span>{booleanText}</span></p>
+                    <Link to={'/editcontact/' + this.props.match.params.id} ><button>Edit</button></Link>
+                    <button onClick={this.deleteContact} >Delete</button>
                 </div>
             </div>
         )

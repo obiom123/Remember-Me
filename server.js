@@ -130,7 +130,7 @@ app.get('/api/contacts/:id', async (request, response) => {
 })
 
 app.put('/api/contacts/:id', async (request, response) => {
-  let id = request.params.id
+  let id = request.params.id;
   const contactEdit = await Contact.findOne({
     where: {
       id: id
@@ -147,6 +147,16 @@ app.put('/api/contacts/:id', async (request, response) => {
   
   response.json(contactEdit);
 })
+
+app.delete("/api/contacts/:id", async (request, response) => {
+  const id = request.params.id 
+  const deleteConatact = await Contact.destroy({
+    where: {
+      id: id
+    }
+  });
+  response.status(200).json(deleteConatact);
+});
 
 app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`);

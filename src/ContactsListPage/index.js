@@ -24,6 +24,7 @@ export default class ContactsListPage extends Component {
     })
 
     const allContactsInfo = await allContacts.json();
+    
     this.setState({
       contacts: allContactsInfo
     })
