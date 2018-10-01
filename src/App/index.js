@@ -47,12 +47,19 @@ class App extends Component {
     })
   }
 
+  logout = () => {
+    localStorage.clear();
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
           <div className="square-container">
-            <Link to="/">Home</Link>
+            <Link to="/"><button>Home</button></Link>
+            &nbsp;
+            &nbsp;
+            <Link to="/login"><button>Logout</button></Link>
             <Route
               path="/login"
               render={(props) => <LoginOrRegistration {...props} emailValid={this.state.emailValid} passwordValid={this.state.passwordValid} userEmail={this.state.userEmail} password={this.state.password} onLogIn={this.onLogIn} onInputChange={this.onInputChange} />}
