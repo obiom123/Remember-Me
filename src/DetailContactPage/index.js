@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import "./style.css"
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import PrivateRoute from "../PrivateRoute";
 
 export default class DetailContactPage extends Component {
     constructor(props) {
-      super(props)
-    
-      this.state = {
-         contact: {},
-         linkedInFriends: "false"
-      }
+        super(props)
+
+        this.state = {
+            contact: {},
+            linkedInFriends: "false"
+        }
     }
 
     componentDidMount = async () => {
@@ -36,21 +37,21 @@ export default class DetailContactPage extends Component {
         }
     }
 
-  render() {
+    render() {
         console.log(this.props.match.params.id, this.state.contact)
         console.log(this.state.contact.conversationDetails);
         const { name, contactInfo, whereYouMet, importance, conversationDetails } = this.state.contact
-    return (
-      <div>
-        <h1>{name}</h1>
-        <h2>{contactInfo}</h2>
-        <h2>{whereYouMet}</h2>
-        Importance <p>{importance}</p>
-        {/* {conversationDetails.match(/\n/g) && <ul>conversationDetails</ul>} */}
-        <p>{conversationDetails}</p>
-        <p>Connected on LinkedIn? <span>{this.state.linkedInFriends}</span></p>
-        <Link to={'/editcontact/' + this.props.match.params.id} >Edit</Link>
-      </div>
-    )
-  }
+        return (
+            <div>
+                <h1>{name}</h1>
+                <h2>{contactInfo}</h2>
+                <h2>{whereYouMet}</h2>
+                Importance <p>{importance}</p>
+                {/* {conversationDetails.match(/\n/g) && <ul>conversationDetails</ul>} */}
+                {conversationDetails}
+                <p>Connected on LinkedIn? <span>{this.state.linkedInFriends}</span></p>
+                <Link to={'/editcontact/' + this.props.match.params.id} ><button>Edit</button></Link>
+            </div>
+        )
+    }
 }

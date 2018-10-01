@@ -39,7 +39,6 @@ app.post('/api/register', async(request, response) => {
     saltRounds
   );
 
-  console.log(hashPassword);
   const newUser = await User.create({
     userEmail: request.body.userEmail,
     passwordDigest: hashPassword
@@ -145,7 +144,7 @@ app.put('/api/contacts/:id', async (request, response) => {
   contactEdit.conversationDetails = conversationDetails
   contactEdit.linkedInFriends = linkedInFriends
   await contactEdit.save();
-  console.log(contactEdit)
+  
   response.json(contactEdit);
 })
 

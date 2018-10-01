@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./style.css"
-import { BrowserRouter as Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import PrivateRoute from "../PrivateRoute";
 
 export default class EditContactPage extends Component {
   constructor(props) {
@@ -70,8 +71,9 @@ export default class EditContactPage extends Component {
 
   render() {
     if (this.state.submittedEditContact) {
+        const { from } = this.props.location.state || { from: { pathname: `/detailcontact/${this.props.match.params.id}` } };
       return (
-        <Redirect to={"/detailcontact/" + this.props.match.params.id} />
+        <Redirect to={from} />
       )
     }
     return (

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./style.css"
-import { BrowserRouter as Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import PrivateRoute from "../PrivateRoute";
 
 export default class AddContact extends Component {
   constructor(props) {
