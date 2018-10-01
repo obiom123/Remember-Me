@@ -82,9 +82,10 @@ export default class EditContactPage extends Component {
         <Redirect to={from} />
       )
     }
-    // if (this.state.linkedInFriends) {
-      
-    // }
+    let booleanParse = null
+    if (this.state.linkedInFriends === true || this.state.linkedInFriends === false) {
+      booleanParse = JSON.parse(this.state.linkedInFriends)
+    }
     console.log(this.state.linkedInFriends, this.state.importance)
     return (
       <div className="edit-form-container">
@@ -109,7 +110,10 @@ export default class EditContactPage extends Component {
           </select>
           <br></br>
           <label htmlFor="input-LinkedInFriends" className="add-label add-LinkedInFriends-label">Connected LinkedIn Friends? (Y/N)</label>
-          <input id="input-LinkedInFriends" className="edit-input inputLinkedInFriends" type="checkbox" name="linkedInFriends" value={this.state.linkedInFriends} onChange={this.onInputChange} checked={this.state.linkedInFriends}/>
+          <select className="edit-input inputLinkedInFriends" name="linkedInFriends" value={this.state.linkedInFriends} onChange={this.onInputChange} >
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
           <br></br>
           <label className="add-label add-ConversationDetails-label">Conversation Details</label>
           <textarea className="inputConversationDetails" name="conversationDetails" value={this.state.conversationDetails} onChange={this.onInputChange} rows="10" cols="60" />
