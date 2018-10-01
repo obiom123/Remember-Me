@@ -90,10 +90,18 @@ export default class EditContactPage extends Component {
           <input className="inputWhereYouMet" type="text" name="whereYouMet" value={this.state.whereYouMet} onChange={this.onInputChange} />
           <br></br>
           <label className="edit-label edit-contactImportance-label">Importance</label>
-          <input className="inputImportance" type="text" name="importance" value={this.state.importance} onChange={this.onInputChange} />
+          {/* <input className="inputImportance" type="text" name="importance" value={this.state.importance} onChange={this.onInputChange} /> */}
+          <select className="edit-input importancce-dropdown" name="importance" value={this.state.importance} onChange={this.onInputChange} >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
           <br></br>
           <label className="edit-label edit-LinkedInFriends-label">LinkedIn Friends?</label>
-          <input className="inputLinkedInFriends" type="text" name="linkedInFriends" value={this.state.linkedInFriends} onChange={this.onInputChange} />
+          {/* <input className="inputLinkedInFriends" type="text" name="linkedInFriends" value={this.state.linkedInFriends} onChange={this.onInputChange} /> */}
+          <input id="input-LinkedInFriends" className="add-input inputLinkedInFriends" type="checkbox" name="linkedInFriends" onChange={this.onInputChange} />
           <br></br>
           <label className="edit-label edit-ConversationDetails-label">Conversation Details</label>
           <textarea className="inputConversationDetails" name="conversationDetails" value={this.state.conversationDetails} onChange={this.onInputChange} rows="10" cols="60"/>
