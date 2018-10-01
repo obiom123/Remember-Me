@@ -24,11 +24,11 @@ export default class EditContactPage extends Component {
     })
   }
 
-  onChangeBoolean = evt => {
-    this.setState({
-      linkedInFriends: 
-    })
-  }
+  // onChangeBoolean = evt => {
+  //   this.setState({
+  //     linkedInFriends: 
+  //   })
+  // }
 
   componentDidMount = async () => {
     const id = this.props.match.params.id
