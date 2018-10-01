@@ -43,7 +43,7 @@ export default class ContactsListPage extends Component {
           <button onClick={this.logout}>Logout</button>
         </nav>
         <h1> Contacts</h1>
-        {this.state.contacts.map(contact => <Link to={'/detailcontact/' + contact.id} ><p className="each-contact-name" key={contact.id} >{contact.name}</p></Link>)}
+        {this.state.contacts.map(contact => <Link className="each-contact-name" to={'/detailcontact/' + contact.id} ><p className="each-contact-name" key={contact.id} >{contact.name}</p></Link>)}
         </div>
       </div>
     )
