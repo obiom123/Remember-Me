@@ -4,13 +4,13 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User, Contact } = require('./models');
 
+
 const PORT = process.env.PORT || 5678;
 const jwtSecret = 'remembermesos757'
-const path = require('path');
+
 const app = express();
 
 app.use(bodyParser.json());
-app.use("/", express.static("./build/"));
 
 app.post('/api/register', async(request, response) => {
   if (!request.body.userEmail || !request.body.password) {
@@ -173,9 +173,3 @@ app.delete("/api/contacts/:id", async (request, response) => {
 app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`);
 });
-
-if (process.env.NODE_ENV == "production") {
-  app.get("/*", function(request, response) {
-    response.sendFile(path.join(__dirname, "build", "index.html"));
-  });
-}
