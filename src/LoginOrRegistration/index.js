@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import "./style.css"
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Redirect } from 'react-router-dom';
 
 
 export default class LoginOrRegistration extends Component {
@@ -80,12 +80,12 @@ export default class LoginOrRegistration extends Component {
 
 
   render() {
-    if (this.state.loggedIn) {
-      const { from } = this.props.location.state || { from: { pathname: "/" } };
-      return (
-        <Redirect to={from} />
-      )
-    }
+    // if (this.state.loggedIn) {
+    //   const { from } = this.props.location.state || { from: { pathname: "/" } };
+    //   return (
+    //     <Redirect to={from} />
+    //   )
+    // }
     return (
       <div className="form-container">
         <form>
