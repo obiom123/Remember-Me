@@ -51,16 +51,17 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-        <div className="square-container">
-          <Route
-            path="/login"
-            render={(props) => <LoginOrRegistration {...props} emailValid={this.state.emailValid} passwordValid={this.state.passwordValid} userEmail={this.state.userEmail} password={this.state.password} onLogIn={this.onLogIn} onInputChange={this.onInputChange} />}
-          />
-          <PrivateRoute path="/addcontact" exact component={AddContact} />
-          <PrivateRoute path="/" exact component={ContactsListPage} />
-          <PrivateRoute path="/detailcontact/:id" exact component={DetailContactPage} />
-          <PrivateRoute path="/editcontact/:id" exact component={EditContactPage} />
-        </div>
+          <div className="square-container">
+            <Link to="/">Home</Link>
+            <Route
+              path="/login"
+              render={(props) => <LoginOrRegistration {...props} emailValid={this.state.emailValid} passwordValid={this.state.passwordValid} userEmail={this.state.userEmail} password={this.state.password} onLogIn={this.onLogIn} onInputChange={this.onInputChange} />}
+            />
+            <PrivateRoute path="/addcontact" exact component={AddContact} />
+            <PrivateRoute path="/" exact component={ContactsListPage} />
+            <PrivateRoute path="/detailcontact/:id" exact component={DetailContactPage} />
+            <PrivateRoute path="/editcontact/:id" exact component={EditContactPage} />
+          </div>
         </div>
       </Router>
     )
