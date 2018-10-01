@@ -86,7 +86,6 @@ export default class EditContactPage extends Component {
     if (this.state.linkedInFriends === true || this.state.linkedInFriends === false) {
       booleanParse = JSON.parse(this.state.linkedInFriends)
     }
-    console.log(this.state.linkedInFriends, this.state.importance)
     return (
       <div className="edit-form-container">
         <h1>Edit Contact Page</h1>
