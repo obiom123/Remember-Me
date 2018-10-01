@@ -16,6 +16,7 @@ export default class ContactsListPage extends Component {
   }
 
   componentDidMount = async () => {
+    
     const allContacts = await fetch('/api/current-user/contacts', {
       method: 'GET',
       headers: {
@@ -24,6 +25,7 @@ export default class ContactsListPage extends Component {
     })
 
     const allContactsInfo = await allContacts.json();
+
     this.setState({
       contacts: allContactsInfo
     })
@@ -36,7 +38,7 @@ export default class ContactsListPage extends Component {
         <nav>
           <Link to="/addcontact">AddContact</Link>
         </nav>
-        <h1> Contacts</h1>
+        <p className="contact-header"> Contacts</p>
         {this.state.contacts.map(contact => <Link className="each-contact-name" to={'/detailcontact/' + contact.id} ><p className="each-contact-name" key={contact.id} >{contact.name}</p></Link>)}
         </div>
       </div>
