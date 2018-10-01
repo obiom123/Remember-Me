@@ -16,7 +16,6 @@ export default class ContactsListPage extends Component {
   }
 
   componentDidMount = async () => {
-    
     const allContacts = await fetch('/api/current-user/contacts', {
       method: 'GET',
       headers: {
@@ -30,15 +29,21 @@ export default class ContactsListPage extends Component {
     })
   }
 
+  logout = () => {
+    localStorage.clear();
+    window.location.reload();
+  }
+
   render() {
     return (
-        <div className="Contacts">
-          <nav>
-            <Link to="/addcontact">AddContact</Link>
-          </nav>
-          <h1>✚ Contacts</h1>
-          {this.state.contacts.map(contact => <Link to={'/detailcontact/' + contact.id} ><h1 key={contact.id} >{contact.name}</h1></Link>)}
-        </div>
+      <div className="Contacts">
+        <nav>
+          <Link to="/addcontact">AddContact</Link>
+          <button onClick={this.logout}>Logout</button>
+        </nav>
+        <h1>✚ Contacts</h1>
+        {this.state.contacts.map(contact => <Link to={'/detailcontact/' + contact.id} ><h1 key={contact.id} >{contact.name}</h1></Link>)}
+      </div>
     )
   }
 }
