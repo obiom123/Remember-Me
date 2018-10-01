@@ -46,12 +46,9 @@ class App extends Component {
     return (
       <Router>
         <div className="App app-container">
-
           <div className="nav-container">
-            <div>
               <Link to="/"><button className="home-buttom">Home</button></Link>
               <Link to="/login"><button className="logout-buttom">Logout</button></Link>
-            </div>
           </div>
               <p className="header-title">Remember Me!</p>
           <div className="square-container">

@@ -39,8 +39,12 @@ export default class LoginOrRegistration extends Component {
         this.setState({
           loggedIn: true
         })
+        console.log('hi');
       }
     }
+    else {
+     console.log('email or password invalid')
+   }
   }
 
   logIn = async () => {
@@ -89,14 +93,15 @@ export default class LoginOrRegistration extends Component {
           <input className="login-input password" type="text" name="password" onChange={this.props.onInputChange} />
           {!this.props.emailValid && (
               <div className="">
-                <p>Enter valid email</p>
+                <p> enter valid email</p>
               </div>
             )}
           {this.props.emailValid && !this.props.passwordValid && (
               <div className="">
-                <p>Enter more than 7 characters. Include at least one number, one capital, and one lowercase.</p>
+                <p> enter valid password</p>
               </div>
             )}
+            
           <button type="button" onClick={this.register}>Register</button>
           <button type="button" onClick={this.logIn}>Log in</button>
           <p>{this.state.errorMessage}</p>
