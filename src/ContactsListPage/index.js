@@ -65,11 +65,12 @@ export default class ContactsListPage extends Component {
   render() {
     return (
       <div className="Contacts">
-      <div className="all-form-containers">
-        <div className="contact-container">
-          <p className="contact-header"> Contacts </p>
-          <Link  to="/addcontact"><img className="addcontact-button" src={"/images/add-a-button-icon-64392.png"}/></Link>
+      <div className="contact-container">
+          {/* <p className="contact-header"> Contacts </p> */}
+          <Link className="addcontact-button-container" to="/addcontact"><img className="addcontact-button" src={"/images/add-a-button-icon-64392.png"}/></Link>
         </div>
+      <div className="all-form-containers">
+        
         
         
         <nav className="sort-container">           
