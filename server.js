@@ -6,7 +6,7 @@ const { User, Contact } = require('./models');
 
 const PORT = process.env.PORT || 5678;
 const jwtSecret = 'remembermesos757'
-
+const path = require('path');
 const app = express();
 
 app.use(bodyParser.json());
