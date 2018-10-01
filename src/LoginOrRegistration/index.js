@@ -15,7 +15,6 @@ export default class LoginOrRegistration extends Component {
   }
 
   register = async () => {
-
     if (this.props.emailValid && this.props.passwordValid) {
       const body = JSON.stringify({
         userEmail: this.props.userEmail,
@@ -40,12 +39,8 @@ export default class LoginOrRegistration extends Component {
         this.setState({
           loggedIn: true
         })
-        console.log('hi');
       }
     }
-    else {
-     console.log('email or password invalid')
-   }
   }
 
   logIn = async () => {
@@ -90,19 +85,18 @@ export default class LoginOrRegistration extends Component {
         <form className="login-form">
           <label className="login-label email">Email</label>
           <input className="login-input email" type="text" name="userEmail" onChange={this.props.onInputChange} />
-          {!this.props.emailValid && (
-              <div className="">
-                <p> enter valid email</p>
-              </div>
-            )}
           <label className="login-label password">Password</label>
           <input className="login-input password" type="text" name="password" onChange={this.props.onInputChange} />
-          {!this.props.passwordValid && (
+          {!this.props.emailValid && (
               <div className="">
-                <p> enter valid password</p>
+                <p>Enter valid email</p>
               </div>
             )}
-            
+          {this.props.emailValid && !this.props.passwordValid && (
+              <div className="">
+                <p>Enter more than 7 characters. Include at least one number, one capital, and one lowercase.</p>
+              </div>
+            )}
           <button type="button" onClick={this.register}>Register</button>
           <button type="button" onClick={this.logIn}>Log in</button>
           <p>{this.state.errorMessage}</p>

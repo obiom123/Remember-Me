@@ -14,21 +14,12 @@ class App extends Component {
     super(props)
 
     this.state = {
-      // userLoggedIn: false,
       userEmail: "",
       password: "",
-      emailValid: false,
-      passwordValid: false,
+      emailValid: true,
+      passwordValid: true,
     }
   }
-
-  // I think we can get rid of this.state.userLoggedIn and onLogIn() because we have loggedIn on LoginOrRegistration component
-  // If we want to have logout button then we should keep the userLoggedIn state on app
-  // onLogIn = () => {
-  //   this.setState({
-  //     userLoggedIn: true,
-  //   });
-  // }
 
   onInputChange = evt => {
     this.setState({
