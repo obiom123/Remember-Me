@@ -80,30 +80,23 @@ export default class EditContactPage extends Component {
       <div className="edit-form-container">
         <h1>Edit Contact Page</h1>
         <form className="all-form-containers" onSubmit={this.onSubmit}>
-        <form className="form-addContact all-form-containers" onSubmit={this.onSubmit}></form>
-          <label htmlFor="input-name" className="add-label add-name-label">Full Name/Nickname</label>
-          <input id="input-name" className="add-input name" type="text" name="name" onChange={this.onInputChange} />
+          <label className="edit-label edit-name-label">Name</label>
+          <input className="edit-input name" type="text" name="name" value={this.state.name} onChange={this.onInputChange} />
           <br></br>
-          <label htmlFor="input-ContactInfo" className="add-label add-contactInfo-label">Email/Phone#/Other</label>
-          <input id="input-ContactInfo" className="add-input inputContactInfo" type="text" name="contactInfo" onChange={this.onInputChange} />
+          <label className="edit-label edit-contactInfo-label">Email/Phone#/Other</label>
+          <input className="inputContactInfo" type="text" name="contactInfo" value={this.state.contactInfo} onChange={this.onInputChange} />
           <br></br>
-          <label htmlFor="input-WhereYouMet" className="add-label add-contactWhereYouMet-label">Event/Location of Initial Meeting</label>
-          <input id="input-WhereYouMet" className="add-input inputWhereYouMet" type="text" name="whereYouMet" onChange={this.onInputChange} />
+          <label className="edit-label edit-contactWhereYouMet-label">Where You Met</label>
+          <input className="inputWhereYouMet" type="text" name="whereYouMet" value={this.state.whereYouMet} onChange={this.onInputChange} />
           <br></br>
-          <label htmlFor="input-Importance" className="add-label add-contactImportance-label">Importance (1-5)</label>
-          <select className="dropdown importancce-dropdown" name="importance" value={this.state.importance} onChange={this.onInputChange} >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          </select>
+          <label className="edit-label edit-contactImportance-label">Importance</label>
+          <input className="inputImportance" type="text" name="importance" value={this.state.importance} onChange={this.onInputChange} />
           <br></br>
-          <label htmlFor="input-LinkedInFriends" className="add-label add-LinkedInFriends-label">Connected LinkedIn Friends? (Y/N)</label>
-          <input id="input-LinkedInFriends" className="add-input inputLinkedInFriends" type="checkbox" name="linkedInFriends" onChange={this.onInputChange} />
+          <label className="edit-label edit-LinkedInFriends-label">LinkedIn Friends?</label>
+          <input className="inputLinkedInFriends" type="text" name="linkedInFriends" value={this.state.linkedInFriends} onChange={this.onInputChange} />
           <br></br>
-          <label className="add-label add-ConversationDetails-label">Conversation Details</label>
-          <textarea className="inputConversationDetails" name="conversationDetails" onChange={this.onInputChange} rows="10" cols="60"/>
+          <label className="edit-label edit-ConversationDetails-label">Conversation Details</label>
+          <textarea className="inputConversationDetails" name="conversationDetails" value={this.state.conversationDetails} onChange={this.onInputChange} rows="10" cols="60"/>
           <br></br>
           <button onClick={this.editContact}>Submit</button>
         </form>
