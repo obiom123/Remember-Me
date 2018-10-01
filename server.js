@@ -114,6 +114,18 @@ app.get('/api/current-user/contacts', async (request, response) => {
   const verify = await jwt.verify(token, jwtSecret);
  
   const contacts = await Contact.findAll({
+    order: [['id', 'DESC']],
+    where: {userId: verify.userId }
+  });
+  response.json(contacts)
+})
+
+app.get('/api/current-user/contacts/important', async (request, response) => {
+  const token = request.headers['jwt-token'];
+  const verify = await jwt.verify(token, jwtSecret);
+ 
+  const contacts = await Contact.findAll({
+    order: [['importance', 'DESC']],
     where: {userId: verify.userId }
   });
   response.json(contacts)
