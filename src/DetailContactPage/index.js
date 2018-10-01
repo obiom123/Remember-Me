@@ -50,12 +50,15 @@ export default class DetailContactPage extends Component {
                 <div className="all-form-containers">
                     <p className="detail-info detail-name" >{name}</p>
                     <p className="detail-info">{contactInfo}</p>
-                    <p className="detail-info">{whereYouMet}</p>
-                    Importance <p>{importance}</p>
-                    <div dangerouslySetInnerHTML={{ __html: convertedDetails }} />
-                    <p>Connected on LinkedIn? <span>{booleanText}</span></p>
-                    <Link to={'/editcontact/' + this.props.match.params.id} ><button>Edit</button></Link>
-                    <button onClick={this.deleteContact} >Delete</button>
+                    <p className="detail-info where-you-met" >{whereYouMet}</p>
+                    <p className="detail-info">Importance: {importance}</p>
+                    <div className="detail-info" dangerouslySetInnerHTML={{ __html: convertedDetails }} />
+                    <p className="detail-info">Connected on LinkedIn? <span>{booleanText}</span></p>
+
+                    <div className="edit-button-container">
+                        <Link className="button" to={'/editcontact/' + this.props.match.params.id} ><button>Edit</button></Link>
+                        <button className="button" onClick={this.deleteContact} >Delete</button>
+                    </div>
                 </div>
             </div>
         )
