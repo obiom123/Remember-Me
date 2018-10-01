@@ -37,12 +37,14 @@ export default class ContactsListPage extends Component {
   render() {
     return (
       <div className="Contacts">
+      <div className="all-form-containers">
         <nav>
           <Link to="/addcontact">AddContact</Link>
           <button onClick={this.logout}>Logout</button>
         </nav>
-        <h1>✚ Contacts</h1>
-        {this.state.contacts.map(contact => <Link to={'/detailcontact/' + contact.id} ><h1 key={contact.id} >{contact.name}</h1></Link>)}
+        <h1> Contacts</h1>
+        {this.state.contacts.map(contact => <Link to={'/detailcontact/' + contact.id} ><p className="each-contact-name" key={contact.id} >{contact.name}</p></Link>)}
+        </div>
       </div>
     )
   }

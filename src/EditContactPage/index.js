@@ -79,7 +79,7 @@ export default class EditContactPage extends Component {
     return (
       <div className="edit-form-container">
         <h1>Edit Contact Page</h1>
-        <form onSubmit={this.onSubmit}>
+        <form className="all-form-containers" onSubmit={this.onSubmit}>
           <label className="edit-label edit-name-label">Name</label>
           <input className="edit-input name" type="text" name="name" value={this.state.name} onChange={this.onInputChange} />
           <br></br>
