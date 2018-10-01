@@ -1,9 +1,49 @@
+
+
+.contact-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-header {
+  display: block;
+  text-align: center;
+  font-size: 35px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.addcontact-button {
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  margin-top: 20px;
+}
+
+.sort-container {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+
+.sort-button {
+  display: block;
+  width: 50%;
+  height: 30px;
+  border: 1px solid black;
+}
+
 .each-contact-name{
+  font-size: 20px;
   text-align: center;
   text-transform: capitalize;
   text-decoration: none;
   color: black;
 }
+
+
 
 .each-contact-name :hover{
   opacity: .5;
