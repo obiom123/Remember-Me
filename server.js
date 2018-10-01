@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User, Contact } = require('./models');
-
+app.use("/", express.static("./build/"));
 
 const PORT = process.env.PORT || 5678;
 const jwtSecret = 'remembermesos757'
