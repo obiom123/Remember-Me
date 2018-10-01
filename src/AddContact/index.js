@@ -11,7 +11,7 @@ export default class AddContact extends Component {
       name: "",
       contactInfo: "",
       whereYouMet: "",
-      importance: "",
+      importance: 1,
       linkedInFriends: "",
       conversationDetails: "",
       submittedAddContact: false
@@ -74,7 +74,7 @@ export default class AddContact extends Component {
           <input id="input-WhereYouMet" className="add-input inputWhereYouMet" type="text" name="whereYouMet" onChange={this.onInputChange} />
           <br></br>
           <label htmlFor="input-Importance" className="add-label add-contactImportance-label">Importance (1-5)</label>
-          <select className="dropdown importancce-dropdown" name="importance" value={this.state.importance} onChange={this.onInputChange} >
+          <select className="dropdown importancce-dropdown" name="importance" onChange={this.onInputChange} >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -83,7 +83,7 @@ export default class AddContact extends Component {
           </select>
           <br></br>
           <label htmlFor="input-LinkedInFriends" className="add-label add-LinkedInFriends-label">Connected LinkedIn Friends? (Y/N)</label>
-          <input id="input-LinkedInFriends" className="add-input inputLinkedInFriends" type="checkbox" name="linkedInFriends" onChange={this.onInputChange} />
+          <input id="input-LinkedInFriends" className="add-input inputLinkedInFriends" type="checkbox" name="linkedInFriends" value={this.state.linkedInFriends} onChange={this.onInputChange} />
           <br></br>
           <label className="add-label add-ConversationDetails-label">Conversation Details</label>
           <textarea className="inputConversationDetails" name="conversationDetails" onChange={this.onInputChange} rows="10" cols="60" />

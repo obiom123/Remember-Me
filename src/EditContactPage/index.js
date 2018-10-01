@@ -24,17 +24,23 @@ export default class EditContactPage extends Component {
     })
   }
 
+  onChangeBoolean = evt => {
+    this.setState({
+      linkedInFriends: 
+    })
+  }
+
   componentDidMount = async () => {
     const id = this.props.match.params.id
     const findContactInfo = await fetch(`/api/contacts/${id}`)
     const contactInfo = await findContactInfo.json()
     this.setState({
-        name: contactInfo.name,
-        contactInfo: contactInfo.contactInfo,
-        whereYouMet: contactInfo.whereYouMet,
-        importance: contactInfo.importance,
-        linkedInFriends: contactInfo.linkedInFriends,
-        conversationDetails: contactInfo.conversationDetails,
+      name: contactInfo.name,
+      contactInfo: contactInfo.contactInfo,
+      whereYouMet: contactInfo.whereYouMet,
+      importance: contactInfo.importance,
+      linkedInFriends: JSON.parse(contactInfo.linkedInFriends),
+      conversationDetails: contactInfo.conversationDetails
     })
   }
 
@@ -46,7 +52,7 @@ export default class EditContactPage extends Component {
       whereYouMet: this.state.whereYouMet,
       importance: this.state.importance,
       linkedInFriends: this.state.linkedInFriends,
-      conversationDetails: this.state.conversationDetails,
+      conversationDetails: this.state.conversationDetails
     });
 
     const newContact = await fetch(`/api/contacts/${id}`, {
@@ -63,7 +69,7 @@ export default class EditContactPage extends Component {
       submittedEditContact: true
     })
   }
-  
+
   onSubmit = (e) => {
     e.preventDefault();
   }
@@ -71,26 +77,29 @@ export default class EditContactPage extends Component {
 
   render() {
     if (this.state.submittedEditContact) {
-        const { from } = this.props.location.state || { from: { pathname: `/detailcontact/${this.props.match.params.id}` } };
+      const { from } = this.props.location.state || { from: { pathname: `/detailcontact/${this.props.match.params.id}` } };
       return (
         <Redirect to={from} />
       )
     }
+    // if (this.state.linkedInFriends) {
+      
+    // }
+    console.log(this.state.linkedInFriends, this.state.importance)
     return (
       <div className="edit-form-container">
         <h1>Edit Contact Page</h1>
         <form className="all-form-containers" onSubmit={this.onSubmit}>
-          <label className="edit-label edit-name-label">Name</label>
-          <input className="edit-input name" type="text" name="name" value={this.state.name} onChange={this.onInputChange} />
+          <label htmlFor="input-name" className="add-label add-name-label">Full Name/Nickname</label>
+          <input id="input-name" className="add-input name" type="text" name="name" value={this.state.name} onChange={this.onInputChange} />
           <br></br>
-          <label className="edit-label edit-contactInfo-label">Email/Phone#/Other</label>
-          <input className="inputContactInfo" type="text" name="contactInfo" value={this.state.contactInfo} onChange={this.onInputChange} />
+          <label htmlFor="input-ContactInfo" className="add-label add-contactInfo-label">Email/Phone#/Other</label>
+          <input id="input-ContactInfo" className="add-input inputContactInfo" type="text" name="contactInfo" value={this.state.contactInfo} onChange={this.onInputChange} />
           <br></br>
-          <label className="edit-label edit-contactWhereYouMet-label">Where You Met</label>
-          <input className="inputWhereYouMet" type="text" name="whereYouMet" value={this.state.whereYouMet} onChange={this.onInputChange} />
+          <label htmlFor="input-WhereYouMet" className="add-label add-contactWhereYouMet-label">Event/Location of Initial Meeting</label>
+          <input id="input-WhereYouMet" className="add-input inputWhereYouMet" type="text" name="whereYouMet" value={this.state.whereYouMet} onChange={this.onInputChange} />
           <br></br>
-          <label className="edit-label edit-contactImportance-label">Importance</label>
-          {/* <input className="inputImportance" type="text" name="importance" value={this.state.importance} onChange={this.onInputChange} /> */}
+          <label htmlFor="input-Importance" className="add-label add-contactImportance-label">Importance (1-5)</label>
           <select className="edit-input importancce-dropdown" name="importance" value={this.state.importance} onChange={this.onInputChange} >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -99,12 +108,11 @@ export default class EditContactPage extends Component {
             <option value="5">5</option>
           </select>
           <br></br>
-          <label className="edit-label edit-LinkedInFriends-label">LinkedIn Friends?</label>
-          {/* <input className="inputLinkedInFriends" type="text" name="linkedInFriends" value={this.state.linkedInFriends} onChange={this.onInputChange} /> */}
-          <input id="input-LinkedInFriends" className="add-input inputLinkedInFriends" type="checkbox" name="linkedInFriends" onChange={this.onInputChange} />
+          <label htmlFor="input-LinkedInFriends" className="add-label add-LinkedInFriends-label">Connected LinkedIn Friends? (Y/N)</label>
+          <input id="input-LinkedInFriends" className="edit-input inputLinkedInFriends" type="checkbox" name="linkedInFriends" value={this.state.linkedInFriends} onChange={this.onInputChange} checked={this.state.linkedInFriends}/>
           <br></br>
-          <label className="edit-label edit-ConversationDetails-label">Conversation Details</label>
-          <textarea className="inputConversationDetails" name="conversationDetails" value={this.state.conversationDetails} onChange={this.onInputChange} rows="10" cols="60"/>
+          <label className="add-label add-ConversationDetails-label">Conversation Details</label>
+          <textarea className="inputConversationDetails" name="conversationDetails" value={this.state.conversationDetails} onChange={this.onInputChange} rows="10" cols="60" />
           <br></br>
           <button onClick={this.editContact}>Submit</button>
         </form>
