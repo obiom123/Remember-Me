@@ -54,11 +54,15 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-            <Link to="/"><button>Home</button></Link>
-            &nbsp;
-            &nbsp;
-            <Link to="/login"><button>Logout</button></Link>
+        <div className="App app-container">
+
+          <div className="nav-container">
+            <div>
+              <Link to="/"><button className="home-buttom">Home</button></Link>
+              <Link to="/login"><button className="logout-buttom">Logout</button></Link>
+            </div>
+          </div>
+              <p className="header-title">Remember Me!</p>
           <div className="square-container">
             <Route
               path="/login"
