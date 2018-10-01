@@ -43,14 +43,16 @@ export default class DetailContactPage extends Component {
         const { name, contactInfo, whereYouMet, importance, conversationDetails } = this.state.contact
         return (
             <div>
-                <h1>{name}</h1>
-                <h2>{contactInfo}</h2>
-                <h2>{whereYouMet}</h2>
+                <div className="all-form-containers">
+                <p className="detail-info detail-name" >{name}</p>
+                <p className="detail-info">{contactInfo}</p>
+                <p className="detail-info">{whereYouMet}</p>
                 Importance <p>{importance}</p>
                 {/* {conversationDetails.match(/\n/g) && <ul>conversationDetails</ul>} */}
                 {conversationDetails}
                 <p>Connected on LinkedIn? <span>{this.state.linkedInFriends}</span></p>
                 <Link to={'/editcontact/' + this.props.match.params.id} ><button>Edit</button></Link>
+                </div>
             </div>
         )
     }

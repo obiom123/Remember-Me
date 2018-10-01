@@ -64,7 +64,7 @@ export default class AddContact extends Component {
     return (
       <div className="inputForm-container">
 
-        <form className="form-addContact" onSubmit={this.onSubmit}>
+        <form className="form-addContact all-form-containers" onSubmit={this.onSubmit}>
           <label for="input-name" className="add-label add-name-label">Full Name/Nickname</label>
           <input id="input-name" className="add-input name" type="text" name="name" onChange={this.onInputChange} />
           <br></br>
