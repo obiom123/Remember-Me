@@ -12,16 +12,6 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.get('/api/current-user/contacts', async (request, response) => {
-  const token = request.headers['jwt-token'];
-  const verify = await jwt.verify(token, jwtSecret);
- 
-  const contacts = await Contact.findAll({
-    where: {userId: verify.userId }
-  });
-  response.json(contacts)
-})
-
 app.post('/api/register', async(request, response) => {
   if (!request.body.userEmail || !request.body.password) {
     response.status(400).json({
@@ -49,7 +39,6 @@ app.post('/api/register', async(request, response) => {
     saltRounds
   );
 
-  console.log(hashPassword);
   const newUser = await User.create({
     userEmail: request.body.userEmail,
     passwordDigest: hashPassword
@@ -120,14 +109,43 @@ app.post('/api/contacts', async (request, response) => {
   response.status(200).json(contact)
 });
 
+app.get('/api/current-user/contacts', async (request, response) => {
+  const token = request.headers['jwt-token'];
+  const verify = await jwt.verify(token, jwtSecret);
+ 
+  const contacts = await Contact.findAll({
+    where: {userId: verify.userId }
+  });
+  response.json(contacts)
+})
+
 app.get('/api/contacts/:id', async (request, response) => {
-  let id = pareInt(request.params.id);
+  let id = request.params.id
   const idContact = await Contact.findOne({
     where: {
       id: id
     }
   })
   response.json(idContact)
+})
+
+app.put('/api/contacts/:id', async (request, response) => {
+  let id = request.params.id
+  const contactEdit = await Contact.findOne({
+    where: {
+      id: id
+    }
+  })
+  const { name, contactInfo, whereYouMet, importance, conversationDetails, linkedInFriends } = request.body
+  contactEdit.name = name 
+  contactEdit.contactInfo = contactInfo
+  contactEdit.whereYouMet = whereYouMet
+  contactEdit.importance = importance
+  contactEdit.conversationDetails = conversationDetails
+  contactEdit.linkedInFriends = linkedInFriends
+  await contactEdit.save();
+  
+  response.json(contactEdit);
 })
 
 app.listen(PORT, () => {

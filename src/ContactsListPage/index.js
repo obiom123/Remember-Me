@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import "./style.css"
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import AddContact from "../AddContact";
+import PrivateRoute from "../PrivateRoute";
+import DetailContactPage from "../DetailContactPage";
 
 
-export default class Contacts extends Component {
+export default class ContactsListPage extends Component {
   constructor(props) {
     super(props)
 
@@ -14,7 +16,6 @@ export default class Contacts extends Component {
   }
 
   componentDidMount = async () => {
-    
     const allContacts = await fetch('/api/current-user/contacts', {
       method: 'GET',
       headers: {
@@ -28,16 +29,21 @@ export default class Contacts extends Component {
     })
   }
 
+  logout = () => {
+    localStorage.clear();
+    window.location.reload();
+  }
+
   render() {
     return (
-        <div className="Contacts">
-          <nav>
-            <Link to="/addcontact">AddContact</Link>
-          </nav>
-          <div className="form-addContact">
-          {this.state.contacts.map(contact => <p className="each-contact-name" key={contact.id} >{contact.name}</p>)}
-          </div>
-        </div>
+      <div className="Contacts">
+        <nav>
+          <Link to="/addcontact">AddContact</Link>
+          <button onClick={this.logout}>Logout</button>
+        </nav>
+        <h1>✚ Contacts</h1>
+        {this.state.contacts.map(contact => <Link to={'/detailcontact/' + contact.id} ><h1 key={contact.id} >{contact.name}</h1></Link>)}
+      </div>
     )
   }
 }

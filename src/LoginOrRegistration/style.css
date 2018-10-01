@@ -16,7 +16,7 @@
 
 .login-form {
     max-width: 70%;
-    height: 200px;
+    /* height: 200px; */
     margin: 2rem auto;
     border: 2px solid grey;
     background-color: #a28b8b;

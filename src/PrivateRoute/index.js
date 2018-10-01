@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom';
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route
-      {...rest}
-      render={props =>
-        localStorage.getItem('user-jwt') !== null ? (
-          <Component {...props} />
-        ) : (
+  <Route
+    {...rest}
+    render={props =>
+      localStorage.getItem('user-jwt') !== null ? (
+        <Component {...props} />
+      ) : (
           <Redirect
             to={{
               pathname: "/login",
@@ -16,8 +16,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
             }}
           />
         )
-      }
-    />
-  );
+    }
+  />
+);
 
 export default PrivateRoute;
