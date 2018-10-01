@@ -16,6 +16,7 @@ export default class ContactsListPage extends Component {
   }
 
   componentDidMount = async () => {
+    
     const allContacts = await fetch('/api/current-user/contacts', {
       method: 'GET',
       headers: {
@@ -69,8 +70,8 @@ export default class ContactsListPage extends Component {
            <button onClick={this.sortByImportance}>Sort By Importance </button>
            <button onClick={this.sortByDateAdded}>Sort By Date Added </button>
         </nav>
-        <h1> Contacts</h1>
-          {this.state.contacts.map(contact => <Link to={'/detailcontact/' + contact.id} ><p className="each-contact-name" key={contact.id} >{contact.name}</p></Link>)}
+        <p className="contact-header"> Contacts</p>
+        {this.state.contacts.map(contact => <Link className="each-contact-name" to={'/detailcontact/' + contact.id} ><p className="each-contact-name" key={contact.id} >{contact.name}</p></Link>)}
         </div>
       </div>
     )

@@ -1,4 +1,12 @@
 .each-contact-name{
   text-align: center;
   text-transform: capitalize;
+  text-decoration: none;
+  color: black;
+}
+
+.each-contact-name :hover{
+  opacity: .5;
+  font-size: calc(100% + 2px);
+  transition: .3s;
 }
