@@ -38,7 +38,11 @@ export default class DetailContactPage extends Component {
         let booleanText = null
         if (conversationDetails) {
             convertedDetails = conversationDetails.replace(/\r?\n/g, '<br />')
-            booleanText = `${linkedInFriends}`
+            if (linkedInFriends) {
+                booleanText = "Yes"
+            } else {
+                booleanText = "No"
+            }
         }
         if (this.state.deleteContact) {
             return (
