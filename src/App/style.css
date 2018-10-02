@@ -48,8 +48,8 @@ body {
 
 .header-remember{
   display: inline;
-  font-size: 50px;
-  color: rgb(117, 187, 253);
+  font-size: 46px;
+  color: #bed8f4;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -59,7 +59,7 @@ body {
 
 .header-me{
   display: inline;
-  font-size: 50px;
+  font-size: 46px;
   color: rgb(7, 129, 62);
   margin: 0;
   padding: 0;

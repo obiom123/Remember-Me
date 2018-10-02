@@ -92,7 +92,7 @@ export default class AddContact extends Component {
           <label className="add-label add-ConversationDetails-label">Conversation Notes</label>
           <textarea className="inputConversationDetails" name="conversationDetails" onChange={this.onInputChange} rows="10" cols="60" />
           <br></br>
-          <button onClick={this.addThisContact}>Add Contact</button>
+          <button className="add-contact" onClick={this.addThisContact}>Add Contact</button>
         </form>
       </div>
     )

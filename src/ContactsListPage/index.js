@@ -70,8 +70,9 @@ export default class ContactsListPage extends Component {
         </nav>
 
         <div className="contact-containers">
-          {this.state.contacts.map(contact => <Link className="each-contact-name" to={'/detailcontact/' + contact.id} key={contact.id} ><p className="each-contact-name" key={contact.id} >{contact.name}</p></Link>)}
           <Link className="addcontact-button-container" to="/addcontact"><img className="addcontact-button" src={"/images/button-add.png"}/></Link>
+          {this.state.contacts.map(contact => <Link className="each-contact-name" to={'/detailcontact/' + contact.id} key={contact.id} ><p className="each-contact-name" key={contact.id} >{contact.name}</p></Link>)}
+          
         </div> 
       </div>
     )

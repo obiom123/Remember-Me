@@ -20,9 +20,15 @@
 
 .addcontact-button {
   display: block;
-  width: 10%;
-  margin-top: 20px;
-  margin: 0 auto;
+  width: 45px;
+  margin-top: 35px;
+  /* margin: 0 auto; */
+  margin-left: auto;
+}
+
+.addcontact-button:hover {
+  opacity: 0.6;
+  transition: 0.5s;
 }
 
 .sort-container {
