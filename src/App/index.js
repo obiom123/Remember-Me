@@ -33,7 +33,7 @@ class App extends Component {
     const validateEmail = emailRegex.test(String(this.state.userEmail).toLowerCase());
     const validatePassword = passwordRegex.test(String(this.state.password));
 
-    await this.setState({
+    this.setState({
       emailValid: validateEmail,
       passwordValid: validatePassword,
     })
