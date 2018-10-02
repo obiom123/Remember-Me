@@ -30,8 +30,8 @@ class App extends Component {
   //   });
   // }
 
-  onInputChange = evt => {
-    this.setState({
+  onInputChange = async evt => {
+    await this.setState({
       [evt.target.name]: evt.target.value
     })
 
@@ -42,7 +42,7 @@ class App extends Component {
     const validateEmail = emailRegex.test(String(this.state.userEmail).toLowerCase());
     const validatePassword = passwordRegex.test(String(this.state.password));
 
-    this.setState({
+    await this.setState({
       emailValid: validateEmail,
       passwordValid: validatePassword,
     })
