@@ -21,10 +21,11 @@
 
 .addcontact-button {
   display: block;
-  width: 75px;
+  width: 10%;
   margin-top: 20px;
-  margin-left: auto;
-  margin-right: 30px;
+  /* margin-left: auto;
+  margin-right: 30px; */
+  margin: 0 auto;
 }
 
 .sort-container {
@@ -36,26 +37,33 @@
 
 .sort-button {
   display: block;
-  width: 50%;
-  height: 35px;
+  width: 100%;
+  height: 40px;
   border: 1px solid #366e00;
   background-color: #366e00;
   color: white;
   text-transform: uppercase;
   font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 800;
+  padding: 10px 20px;
+  letter-spacing: 1px;
+  outline: none;
+  margin-top: 30px;
+}
+
+.sort-button:hover {
+  color: #BED8F4;
 }
 
 .each-contact-name{
-  font-size: 20px;
-  text-align: center;
+  font-size: 34px;
+  text-align: left;
   text-transform: capitalize;
   text-decoration: none;
-  color: black;
+  color: #366e00;
+  padding: 10px;
 }
-
-
 
 .each-contact-name :hover{
   opacity: .5;

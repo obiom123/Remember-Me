@@ -110,11 +110,11 @@ export default class LoginOrRegistration extends Component {
           <div className="input-container">
           {!this.props.passwordValid && (
               <div className="error-message">
-                <p> enter valid password</p>
+                <p> Password must include: one uppercase letter, one lowercase letter, one number </p>
               </div>
             )}
           </div>
-          
+
           <div className="button-container">  
             <button className="button" type="button" onClick={this.register}>Register</button>
             <button className="button" type="button" onClick={this.logIn}>Log in</button>

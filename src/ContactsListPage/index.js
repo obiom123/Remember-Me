@@ -65,18 +65,15 @@ export default class ContactsListPage extends Component {
   render() {
     return (
       <div className="Contacts">
-      <div className="contact-container">
-          {/* <p className="contact-header"> Contacts </p> */}
-          
-        </div>
-      <div className="all-form-containers">
-        
-        
-        
         <nav className="sort-container">           
            <button className="sort-button" onClick={this.sortByImportance}>Importance </button>
            <button className="sort-button" onClick={this.sortByDateAdded}>Date Added </button>
         </nav>
+      <div className="all-form-containers">
+        
+        
+        
+        
         {this.state.contacts.map(contact => <Link className="each-contact-name" to={'/detailcontact/' + contact.id} key={contact.id} ><p className="each-contact-name" key={contact.id} >{contact.name}</p></Link>)}
         <Link className="addcontact-button-container" to="/addcontact"><img className="addcontact-button" src={"/images/button-add.png"}/></Link>
         </div>

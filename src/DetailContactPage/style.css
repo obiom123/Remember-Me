@@ -1,11 +1,33 @@
-.detail-name {
-  font-family: 'Questrial', sans-serif;
-  font-size: 25px;
+.all-form-containers {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.exit-button {
+  display: block;
+  width: 25px;
+  margin-left: auto;
+  margin-right: 50px;
+  padding-top: 40px;
+}
+
+.detail-info-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 19px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .detail-info{
-  text-align: center;
+  text-align: left;
   text-transform: capitalize;
+  font-family: 'Noto Serif', serif;
+}
+
+.detail-name {
+  font-family: 'Noto Serif', serif;
+  font-size: 35px;
 }
 
 .link {
@@ -14,18 +36,31 @@
 }
 
 .where-you-met {
-  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .edit-button-container {
   display: flex;
-  width: 100%;
-  justify-content: center;
+  margin: 0 auto;
+  width: 80%;
+  padding-top: 80px;
+  justify-content: space-around;
+  border: none;
+}
 
+.button:hover {
+  background-color: #ffffff;
+  transition: 0.5s;
+  color: #366E00;
+  border: 2px solid #366E00;
 }
 
 .button {
   display: block;
-  border: 1px solid black;
+  width: 45%;
+  border: 2px solid #366E00;
 }

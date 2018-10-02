@@ -63,6 +63,7 @@ export default class AddContact extends Component {
     }
     return (
       <div className="inputForm-container">
+      <Link to="/"><img className="exit-button" src={"/images/button-exit.png"}/></Link>
         <form className="form-addContact all-form-containers" onSubmit={this.onSubmit}>
           <label htmlFor="input-name" className="add-label add-name-label">Name</label>
           <input id="input-name" className="add-input name" type="text" name="name" onChange={this.onInputChange} />

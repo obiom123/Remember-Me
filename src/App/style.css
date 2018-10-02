@@ -13,13 +13,16 @@ body {
 }
 
 .home-button {
-  width: 30px;
+  height: 16px;
+  padding: 10px 0px 5px 20px;
 }
 
 .logout-button {
-  width: 60px;
+  height: 16px;
   margin-left: 10px;
+  padding: 10px 0px 5px 10px;
 }
+
 .square-container {
   max-width: 100%;
   min-height: 80vh;
