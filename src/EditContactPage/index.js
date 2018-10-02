@@ -89,8 +89,9 @@ export default class EditContactPage extends Component {
     console.log(this.state.linkedInFriends, this.state.importance)
     return (
       <div className="edit-form-container">
-        <h1>Edit Contact Page</h1>
+        <Link to="/"><img className="exit-button" src={"/images/button-exit.png"}/></Link>
         <form className="all-form-containers" onSubmit={this.onSubmit}>
+        <h1>Edit Contact</h1>
           <label htmlFor="input-name" className="add-label add-name-label">Name</label>
           <input id="input-name" className="add-input name" type="text" name="name" value={this.state.name} onChange={this.onInputChange} />
           <br></br>

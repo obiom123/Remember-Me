@@ -9,7 +9,6 @@
 .contact-header {
   width:50%;
   display: block;
-  /* text-align: center; */
   font-size: 25px;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -23,8 +22,6 @@
   display: block;
   width: 10%;
   margin-top: 20px;
-  /* margin-left: auto;
-  margin-right: 30px; */
   margin: 0 auto;
 }
 
@@ -56,17 +53,24 @@
   color: #BED8F4;
 }
 
+.contact-containers {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
 .each-contact-name{
   font-size: 34px;
+  margin-bottom: 10px;
+  margin-top: 0px;
   text-align: left;
   text-transform: capitalize;
   text-decoration: none;
   color: #366e00;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .each-contact-name :hover{
   opacity: .5;
-  /* font-size: calc(100% + 2px); */
   transition: .3s;
 }
