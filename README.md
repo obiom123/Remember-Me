@@ -6,3 +6,6 @@
 
 ## ERD
 ![ERD](ERD.png)
+
+### Final Product
+![final wireframe](finalWireframe.png)
