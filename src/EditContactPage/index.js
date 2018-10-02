@@ -88,15 +88,16 @@ export default class EditContactPage extends Component {
     }
     return (
       <div className="edit-form-container">
-        <h1>Edit Contact Page</h1>
+        <Link to="/"><img className="exit-button" src={"/images/button-exit.png"}/></Link>
         <form className="all-form-containers" onSubmit={this.onSubmit}>
-          <label htmlFor="input-name" className="add-label add-name-label">Full Name/Nickname</label>
+        <h1>Edit Contact</h1>
+          <label htmlFor="input-name" className="add-label add-name-label">Name</label>
           <input id="input-name" className="add-input name" type="text" name="name" value={this.state.name} onChange={this.onInputChange} />
           <br></br>
-          <label htmlFor="input-ContactInfo" className="add-label add-contactInfo-label">Email/Phone#/Other</label>
+          <label htmlFor="input-ContactInfo" className="add-label add-contactInfo-label">Contact info</label>
           <input id="input-ContactInfo" className="add-input inputContactInfo" type="text" name="contactInfo" value={this.state.contactInfo} onChange={this.onInputChange} />
           <br></br>
-          <label htmlFor="input-WhereYouMet" className="add-label add-contactWhereYouMet-label">Event/Location of Initial Meeting</label>
+          <label htmlFor="input-WhereYouMet" className="add-label add-contactWhereYouMet-label">Where you met</label>
           <input id="input-WhereYouMet" className="add-input inputWhereYouMet" type="text" name="whereYouMet" value={this.state.whereYouMet} onChange={this.onInputChange} />
           <br></br>
           <label htmlFor="input-Importance" className="add-label add-contactImportance-label">Importance (1-5)</label>

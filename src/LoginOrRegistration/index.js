@@ -88,22 +88,38 @@ export default class LoginOrRegistration extends Component {
     return (
       <div className="form-container">
         <form className="login-form">
-          <label className="login-label email">Email</label>
-          <input className="login-input email" type="text" name="userEmail" onChange={this.props.onInputChange} />
-          <label className="login-label password">Password</label>
-          <input className="login-input password" type="text" name="password" onChange={this.props.onInputChange} />
+        
+          <div className="input-container">
+            <label className="login-label email">Email</label>
+            <input className="login-input email" type="text" name="userEmail" onChange={this.props.onInputChange} />
+          </div>
+          
+          <div className="input-container">
           {!this.props.emailValid && (
-            <div className="">
-              <p>Enter valid email</p>
-            </div>
-          )}
-          {this.props.emailValid && !this.props.passwordValid && (
-            <div className="">
-              <p>Enter at least 6 characters and include a number, lowercase, and upercase letter.</p>
-            </div>
-          )}
-          <button type="button" onClick={this.register}>Register</button>
-          <button type="button" onClick={this.logIn}>Log in</button>
+              <div className="error-message">
+                <p> Enter a valid email</p>
+              </div>
+            )}
+          </div>
+
+          <div className="input-container">
+            <label className="login-label password">Password</label>
+            <input className="login-input password" type="text" name="password" onChange={this.props.onInputChange} />
+          </div>  
+        
+          <div className="input-container">
+          {!this.props.passwordValid && (
+              <div className="error-message">
+                <p> Password must include: one uppercase letter, one lowercase letter, one number </p>
+              </div>
+            )}
+          </div>
+
+          <div className="button-container">  
+            <button className="button" type="button" onClick={this.register}>Register</button>
+            <button className="button" type="button" onClick={this.logIn}>Log in</button>
+          </div>
+
           <p>{this.state.errorMessage}</p>
         </form>
       </div>
