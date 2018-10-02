@@ -29,3 +29,4 @@ module.exports = {
   Contact: Contact,
   sequelize: sequelize
 };
+
