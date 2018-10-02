@@ -16,7 +16,6 @@ export default class ContactsListPage extends Component {
   }
 
   componentDidMount = async () => {
-    
     const allContacts = await fetch('/api/current-user/contacts', {
       method: 'GET',
       headers: {
