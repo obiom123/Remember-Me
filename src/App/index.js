@@ -47,10 +47,12 @@ class App extends Component {
       <Router>
         <div className="App app-container">
           <div className="nav-container">
+            <div>
               <Link to="/"><button className="home-buttom">Home</button></Link>
               <Link to="/login"><button className="logout-buttom">Logout</button></Link>
+            </div>
           </div>
-              <p className="header-title">Remember Me!</p>
+          <p className="header-title">Remember Me!</p>
           <div className="square-container">
             <Route
               path="/login"
