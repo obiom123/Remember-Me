@@ -15,12 +15,12 @@ export default class LoginOrRegistration extends Component {
   }
 
   register = async () => {
-
     if (this.props.emailValid && this.props.passwordValid) {
       const body = JSON.stringify({
         userEmail: this.props.userEmail,
         password: this.props.password
       });
+
       const addUserResponse = await fetch('/api/register', {
         method: "POST",
         body: body,
@@ -44,8 +44,8 @@ export default class LoginOrRegistration extends Component {
       }
     }
     else {
-     console.log('email or password invalid')
-   }
+      console.log('email or password invalid')
+    }
   }
 
   logIn = async () => {
@@ -88,7 +88,7 @@ export default class LoginOrRegistration extends Component {
     return (
       <div className="form-container">
         <form className="login-form">
-
+        
           <div className="input-container">
             <label className="login-label email">Email</label>
             <input className="login-input email" type="text" name="userEmail" onChange={this.props.onInputChange} />
@@ -119,6 +119,7 @@ export default class LoginOrRegistration extends Component {
             <button className="button" type="button" onClick={this.register}>Register</button>
             <button className="button" type="button" onClick={this.logIn}>Log in</button>
           </div>
+
           <p>{this.state.errorMessage}</p>
         </form>
       </div>

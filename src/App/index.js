@@ -14,21 +14,12 @@ class App extends Component {
     super(props)
 
     this.state = {
-      // userLoggedIn: false,
       userEmail: "",
       password: "",
-      emailValid: false,
-      passwordValid: false,
+      emailValid: true,
+      passwordValid: true,
     }
   }
-
-  // I think we can get rid of this.state.userLoggedIn and onLogIn() because we have loggedIn on LoginOrRegistration component
-  // If we want to have logout button then we should keep the userLoggedIn state on app
-  // onLogIn = () => {
-  //   this.setState({
-  //     userLoggedIn: true,
-  //   });
-  // }
 
   onInputChange = evt => {
     this.setState({
@@ -56,13 +47,13 @@ class App extends Component {
     return (
       <Router>
         <div className="App app-container">
-
           <div className="nav-container">
             <div>
               <Link to="/"><img className="home-button" src={"/images/button-home.png"}/></Link>
               <Link to="/login"><img className="logout-button" src={"/images/button-logout.png"}/></Link>
             </div>
           </div>
+          
           <div className="header-container">
              <p className="header-remember">REMEMBER</p><p className="header-me">ME</p>
           </div>
