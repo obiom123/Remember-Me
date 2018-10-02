@@ -1,11 +1,16 @@
 .detail-name {
-  font-family: 'Righteous', cursive;
+  font-family: 'Questrial', sans-serif;
   font-size: 25px;
 }
 
 .detail-info{
   text-align: center;
   text-transform: capitalize;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
 }
 
 .where-you-met {

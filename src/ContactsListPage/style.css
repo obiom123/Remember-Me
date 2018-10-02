@@ -16,18 +16,20 @@
 }
 
 .addcontact-button-container{
-  width: 15%;
+  width: 200px;
 }
 
 .addcontact-button {
   display: block;
-  width: 100%;
+  width: 75px;
   margin-top: 20px;
+  margin-left: auto;
+  margin-right: 30px;
 }
 
 .sort-container {
   display: flex;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   justify-content: space-around;
 }
@@ -35,8 +37,14 @@
 .sort-button {
   display: block;
   width: 50%;
-  height: 30px;
-  border: 1px solid black;
+  height: 35px;
+  border: 1px solid #366e00;
+  background-color: #366e00;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
 }
 
 .each-contact-name{
@@ -51,6 +59,6 @@
 
 .each-contact-name :hover{
   opacity: .5;
-  font-size: calc(100% + 2px);
+  /* font-size: calc(100% + 2px); */
   transition: .3s;
 }

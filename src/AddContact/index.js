@@ -64,13 +64,13 @@ export default class AddContact extends Component {
     return (
       <div className="inputForm-container">
         <form className="form-addContact all-form-containers" onSubmit={this.onSubmit}>
-          <label htmlFor="input-name" className="add-label add-name-label">Full Name/Nickname</label>
+          <label htmlFor="input-name" className="add-label add-name-label">Name</label>
           <input id="input-name" className="add-input name" type="text" name="name" onChange={this.onInputChange} />
           <br></br>
-          <label htmlFor="input-ContactInfo" className="add-label add-contactInfo-label">Email/Phone#/Other</label>
+          <label htmlFor="input-ContactInfo" className="add-label add-contactInfo-label">Contact info</label>
           <input id="input-ContactInfo" className="add-input inputContactInfo" type="text" name="contactInfo" onChange={this.onInputChange} />
           <br></br>
-          <label htmlFor="input-WhereYouMet" className="add-label add-contactWhereYouMet-label">Event/Location of Initial Meeting</label>
+          <label htmlFor="input-WhereYouMet" className="add-label add-contactWhereYouMet-label">Where you met</label>
           <input id="input-WhereYouMet" className="add-input inputWhereYouMet" type="text" name="whereYouMet" onChange={this.onInputChange} />
           <br></br>
           <label htmlFor="input-Importance" className="add-label add-contactImportance-label">Importance (1-5)</label>
@@ -88,7 +88,7 @@ export default class AddContact extends Component {
             <option value="true">Yes</option>
           </select>
           <br></br>
-          <label className="add-label add-ConversationDetails-label">Conversation Details</label>
+          <label className="add-label add-ConversationDetails-label">Conversation Notes</label>
           <textarea className="inputConversationDetails" name="conversationDetails" onChange={this.onInputChange} rows="10" cols="60" />
           <br></br>
           <button onClick={this.addThisContact}>Add Contact</button>

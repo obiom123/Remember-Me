@@ -60,7 +60,8 @@ export default class DetailContactPage extends Component {
                     <p className="detail-info">Connected on LinkedIn? <span>{booleanText}</span></p>
 
                     <div className="edit-button-container">
-                        <Link className="button" to={'/editcontact/' + this.props.match.params.id} ><button>Edit</button></Link>
+                        {/* <Link className="button" to={'/editcontact/' + this.props.match.params.id} ><button>Edit</button></Link> */}
+                        <button className="button"><Link className="link"to={'/editcontact/' + this.props.match.params.id} >Edit</Link></button>
                         <button className="button" onClick={this.deleteContact} >Delete</button>
                     </div>
                 </div>

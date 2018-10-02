@@ -36,7 +36,8 @@ class App extends Component {
     })
 
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const passwordRegex = /^(?=.{6,32}$)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*/;
+    // (?=.{6,32}$)
 
     const validateEmail = emailRegex.test(String(this.state.userEmail).toLowerCase());
     const validatePassword = passwordRegex.test(String(this.state.password));
@@ -58,11 +59,14 @@ class App extends Component {
 
           <div className="nav-container">
             <div>
-              <Link to="/"><button className="home-buttom">Home</button></Link>
-              <Link to="/login"><button className="logout-buttom">Logout</button></Link>
+              <Link to="/"><img className="home-button" src={"/images/button-home.png"}/></Link>
+              <Link to="/login"><img className="logout-button" src={"/images/button-logout.png"}/></Link>
             </div>
           </div>
-              <p className="header-title">Remember Me!</p>
+          <div className="header-container">
+             <p className="header-remember">REMEMBER</p><p className="header-me">ME</p>
+          </div>
+              
           <div className="square-container">
             <Route
               path="/login"

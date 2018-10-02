@@ -88,23 +88,37 @@ export default class LoginOrRegistration extends Component {
     return (
       <div className="form-container">
         <form className="login-form">
-          <label className="login-label email">Email</label>
-          <input className="login-input email" type="text" name="userEmail" onChange={this.props.onInputChange} />
+
+          <div className="input-container">
+            <label className="login-label email">Email</label>
+            <input className="login-input email" type="text" name="userEmail" onChange={this.props.onInputChange} />
+          </div>
+          
+          <div className="input-container">
           {!this.props.emailValid && (
-              <div className="">
-                <p> enter valid email</p>
+              <div className="error-message">
+                <p> Enter a valid email</p>
               </div>
             )}
-          <label className="login-label password">Password</label>
-          <input className="login-input password" type="text" name="password" onChange={this.props.onInputChange} />
+          </div>
+
+          <div className="input-container">
+            <label className="login-label password">Password</label>
+            <input className="login-input password" type="text" name="password" onChange={this.props.onInputChange} />
+          </div>  
+        
+          <div className="input-container">
           {!this.props.passwordValid && (
-              <div className="">
+              <div className="error-message">
                 <p> enter valid password</p>
               </div>
             )}
-            
-          <button type="button" onClick={this.register}>Register</button>
-          <button type="button" onClick={this.logIn}>Log in</button>
+          </div>
+          
+          <div className="button-container">  
+            <button className="button" type="button" onClick={this.register}>Register</button>
+            <button className="button" type="button" onClick={this.logIn}>Log in</button>
+          </div>
           <p>{this.state.errorMessage}</p>
         </form>
       </div>
