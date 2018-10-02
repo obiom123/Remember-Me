@@ -104,7 +104,7 @@ export default class LoginOrRegistration extends Component {
 
           <div className="input-container">
             <label className="login-label password">Password</label>
-            <input className="login-input password" type="text" name="password" onChange={this.props.onInputChange} />
+            <input className="login-input password" type="password" name="password" onChange={this.props.onInputChange} />
           </div>  
         
           <div className="input-container">
