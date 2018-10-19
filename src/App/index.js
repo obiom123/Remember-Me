@@ -50,7 +50,7 @@ class App extends Component {
           <div className="nav-container">
             <div>
               <Link to="/"><img className="home-button" src={"/images/button-home.png"}/></Link>
-              <Link to="/login"><img className="logout-button" src={"/images/button-logout.png"}/></Link>
+              <Link onClick={this.logout} to="/login"><img className="logout-button" src={"/images/button-logout.png"}/></Link>
             </div>
           </div>
           
